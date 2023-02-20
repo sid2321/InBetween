@@ -10,14 +10,14 @@
   "author": "siddhant gaonker",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^10.8.0",
+    "cypress": "^12.6.0",
     "cypress-downloadfile": "^1.2.2",
     "puppeteer": "^15.4.0"
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.1",
     "cy-verify-downloads": "^0.1.8",
-    "cypress": "^10.3.0",
+    "cypress": "^12.6.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-image-diff-js": "^1.19.2",
     "cypress-mochawesome-reporter": "^3.2.0",
