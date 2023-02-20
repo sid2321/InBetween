@@ -1,0 +1,6 @@
+{
+    "salesProgram":"[aria-label='sales program']",
+    "productFamily":"[aria-label='product family']",
+    "subCategory":"[aria-label='subcategory']"
+
+}

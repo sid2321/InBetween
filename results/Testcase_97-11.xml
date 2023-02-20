@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="128.811" tests="8" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-02-17T08:12:57" tests="0" file="cypress\e2e\PublicationWizard\set-97-112.cy.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Publication Wizard Customization Part - 1" timestamp="2023-02-17T08:12:57" tests="8" failures="0" time="128.811">
+    <testcase name="Publication Wizard Customization Part - 1 check font family" time="16.052" classname="check font family" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="Publication Wizard Customization Part - 1 header logo should not be displayed" time="1.282" classname="header logo should not be displayed" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="Publication Wizard Customization Part - 1 Customer Logo and text should be displayed" time="28.109" classname="Customer Logo and text should be displayed" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="Publication Wizard Customization Part - 1 check the top page panel color and background color" time="22.858" classname="check the top page panel color and background color" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="Publication Wizard Customization Part - 1 check the tab panel color and background colour" time="3.423" classname="check the tab panel color and background colour" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="Publication Wizard Customization Part - 1 drop down selection color and background colour" time="3.277" classname="drop down selection color and background colour" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="Publication Wizard Customization Part - 1 check the table header color" time="21.256" classname="check the table header color" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="Publication Wizard Customization Part - 1 check the table selection color and background color" time="32.554" classname="check the table selection color and background color" failure="false" error="false" success="true">
+    </testcase>
+  </testsuite>
+</testsuites>

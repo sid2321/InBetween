@@ -1,0 +1,41 @@
+{
+    "projectTouristic":{
+        "projectName":" Touristic_Project ",
+        "pubName":" InBetween_Reisen "
+    },
+    "RDU":{
+        "projectName":" RDU_TimePiecesCards_MASTER_27112019 ",
+        "masterPublication":" TimePiecesCards ",
+        "pubName":" IB DSPUB-708 ",
+        "stackRDU":" RDU TimePiecesCards ",
+        "sub":" SubCollection "
+    },
+    "newRDU":{
+        "projectName":" NEW-RDU_TimePiecesCards_MASTER_15062022 ",
+        "publication":" TimePiecesCards ",
+        "dragDrop":" Automation-DragDrop ",
+        "element_selection":" element_selection ",
+        "masterPublication":" RDU_Catalog_2022 ",
+        "stackRDU":" RDU TimePiecesCards ",
+        "pubName":"Test12345678910123534556",
+        "sub":" SubCollection "
+    },
+    "coffeness":{
+        "projectName":" IB_Demo_Coffeeness_V2 ",
+        "masterPublication":" Coffeeness "
+    },
+    "simple":{
+        "projectName":" IB_Simple_Project_V2 ",
+        "publication":" dynamisch "
+    },
+    "bsh":{
+        "projectGaggeanau":" BSH_Pricelist_Gaggenau ",
+        "pubGaggenau":" TEST_UI-Performance_S ",
+        "projectNeff":" BSH_Pricelist_Neff ",
+        "masterPublication":" Pricelist ",
+        "projectSiemens":" BSH_Pricelist_Siemens_GroupBySortTest ",
+        "pubSiemens":" GroupBySortTest ",
+        "projectBosch":" BSH_Pricelist_Bosch ",
+        "pubBosch":" Test_2021-07-08_GR-run "
+    }
+}

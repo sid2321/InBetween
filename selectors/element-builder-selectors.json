@@ -1,0 +1,10 @@
+{
+    "topSubMenu":"#subMenu",
+    "playArea":"#vscroll",
+    "toolBar":"#builderTab5",
+    "previewButton":"[aria-describedby='cdk-describedby-message-33']",
+    "zoomPagePlanner":".mobile_dropdown_zoom ",
+    "mainMenu":"#mainMenu",
+    "stacktable":"#StackTable",
+    "playAreaDrop":"#playAreaContainer"
+}

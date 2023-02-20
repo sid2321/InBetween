@@ -1,0 +1,11 @@
+{
+    "userName": "#username",
+    "userPassword": "#password",
+    "selectProductDropdown": "#selectDropdown",
+    "loginForm": ".login-form",
+    "loginButton": "#login-btn",
+    "ibLogo":"#ibLogo",
+    "inValidPass":"#invalid_pass",
+    "mainLoginForm":"#loginForm"
+
+}

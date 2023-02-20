@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="530.388" tests="2" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-02-17T07:00:41" tests="0" file="cypress\e2e\PublicationWizard\set-40-49.cy.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Publication creation" timestamp="2023-02-17T07:00:41" tests="2" failures="0" time="530.388">
+    <testcase name="Publication creation create a new publication" time="30.905" classname="create a new publication" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="Publication creation duplicate and generate an existing publication" time="499.483" classname="duplicate and generate an existing publication" failure="false" error="false" success="true">
+    </testcase>
+  </testsuite>
+</testsuites>

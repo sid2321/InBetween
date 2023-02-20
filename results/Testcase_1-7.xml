@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="55.199999999999996" tests="6" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-02-17T06:38:52" tests="0" file="cypress\e2e\PublicationWizard\set-1-7.cy.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="authenication" timestamp="2023-02-17T06:38:52" tests="6" failures="0" time="55.199999999999996">
+    <testcase name="authenication check ibLogo" time="9.047" classname="check ibLogo" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="authenication login to InBetween" time="11.06" classname="login to InBetween" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="authenication logout from PW" time="6.675" classname="logout from PW" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="authenication inValid Login" time="2.805" classname="inValid Login" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="authenication sync projects" time="17.478" classname="sync projects" failure="false" error="false" success="true">
+    </testcase>
+    <testcase name="authenication Language change" time="8.135" classname="Language change" failure="false" error="false" success="true">
+    </testcase>
+  </testsuite>
+</testsuites>

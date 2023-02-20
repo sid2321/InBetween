@@ -1,0 +1,14 @@
+{
+    "projectName":".pName",
+    "selectMasterPublication":"[panelclass='publicationDropDown']",
+    "selectdropdown":".publicationDropDown",
+    "downloadBtn":"#dropdownBasic2",
+    "download":"#downloadLinks",
+    "generationVariable":".testBtn",
+    "genSelection":"app-variables",
+    "logLang":"[panelclass='flagDropDown']",
+    "flagDropdown":".flagDropDown",
+    "appTable":"app-table",
+    "searchProduct":".searchIcon",
+    "filterDiv":".filter-bheight"
+}

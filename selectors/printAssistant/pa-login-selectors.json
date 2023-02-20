@@ -1,0 +1,8 @@
+{
+    "userName": "#username",
+    "password": "#password",
+    "loginBtn":"#btn",
+    "proceed":"#proceedBtn",
+    "selecProj":".projectSelection-projectWrap",
+    "loginImage":".login-box"
+}

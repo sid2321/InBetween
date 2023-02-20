@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE coffeenessData SYSTEM "Simple_Data_EN_DE.dtd">
+<coffeenessData>
+	<product id="001" name="Tea" type="ProductList" img="tea_plantage.jpg">
+		<property language="EN" name="Tea"/>
+		<text language="EN" name="description">TEST  a break with a cup of tea. Our selected varieties revitalize your body and free your mind, so you can work with new energy and fresh ideas. We focus on the highest quality and only choose certified fair trade products.</text>
+		<property language="DE" name="Tee"/>
+		<text language="DE" name="description">NEW Machen Sie Pause mit einer Tasse Tee. Unsere ausgewählten Sorten beleben den Körper und machen den Kopf frei, damit Sie mit neuer Energie und frischen Ideen weiter arbeiten können. Außerdem achten wir auf höchste Qualität und wählen nur FairTrade Produkte.</text>
+		<article id="0011" name="China Maojian" position="1" type="ProductList" img="china_maojang.jpg" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">China Maojian</property>
+			<property display="PU" id="03" name="packagingUnit">200 g</property>
+			<property display="Price" id="04" name="price">7,99 $</property>
+			<property display="Price/10" id="05" name="priceForTen">70,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pta0011</property>
+		</article>
+		<article id="0011" name="China Maojian" position="1" type="ProductList" img="china_maojang.jpg" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">China Maojian</property>
+			<property display="PU" id="03" name="packagingUnit">200 g</property>
+			<property display="Preis" id="04" name="price">7,99 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">70,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pta0011</property>
+		</article>
+		<article id="0012" name="Matcha" position="2" type="ProductList" img="matcha.jpg" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Matcha</property>
+			<property display="PU" id="03" name="packagingUnit">150 g</property>
+			<property display="Price" id="04" name="price">9,99 $</property>
+			<property display="Price/10" id="05" name="priceForTen">90,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pta0012</property>
+		</article>
+		<article id="0012" name="Matcha" position="2" type="ProductList" img="matcha.jpg" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Matcha</property>
+			<property display="PU" id="03" name="packagingUnit">150 g</property>
+			<property display="Preis" id="04" name="price">9,99 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">90,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pta0012</property>
+		</article>
+		<article id="0014" name="Darjeeling" position="2" type="ProductList" img="darjeeling.jpg" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Darjeeling</property>
+			<property display="PU" id="03" name="packagingUnit">200 g</property>
+			<property display="Price" id="04" name="price">5,99 $</property>
+			<property display="Price/10" id="05" name="priceForTen">50,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pta0013</property>
+		</article>
+		<article id="0014" name="Darjeeling" position="2" type="ProductList" img="darjeeling.jpg" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Darjeeling</property>
+			<property display="PU" id="03" name="packagingUnit">200 g</property>
+			<property display="Preis" id="04" name="price">5,99 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">50,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pta0013</property>
+		</article>
+		<article id="0013" name="Oolong" position="1" type="ProductList" img="oolong.jpg" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Oolong</property>
+			<property display="PU" id="03" name="packagingUnit">200 g</property>
+			<property display="Price" id="04" name="price">6,99 $</property>
+			<property display="Price/10" id="05" name="priceForTen">60,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pta0014</property>
+		</article>
+		<article id="0013" name="Oolong" position="1" type="ProductList" img="oolong.jpg" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Oolong</property>
+			<property display="PU" id="03" name="packagingUnit">200 g</property>
+			<property display="Preis" id="04" name="price">6,99 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">60,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pta0014</property>
+		</article>
+			
+	</product>
+	<product id="002" name="Coffee" type="ProductList" img="coffee_sack.jpg">
+		<property language="EN" name="Coffee"/>
+		<text language="EN" name="description">Coffee is an everyday drink. Nobody wants to live in a world without coffee. Therefore it is so important that the daily energy brew is also delicious. Treat yourself and your collegues with the best of coffee enjoyment with our premium beans. </text>
+		<property language="DE" name="Kaffee"/>
+		<text language="DE" name="description">Der Kaffee ist aus unserem Alltag kaum heraus zu denken. Viele wollen und können gar nicht mehr ohne ihn. Umso wichtiger, dass das tägliche Energiegebräu auch genießbar ist. Gönnen Sie sich und ihren Kollegen den vollen Kaffegenuss mit unseren Premiumbohnen. </text>
+		<article id="0021" img="arabica.jpg" name="Arabica" position="1" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Arabica</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Price" id="04" name="price">13,99 $</property>
+			<property display="Price/10" id="05" name="priceForTen">110,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0021</property>
+		</article>
+		<article id="0021" img="arabica.jpg" name="Arabica" position="1" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="sort">Arabica</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Preis" id="04" name="price">13,99 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">110,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0021</property>
+		</article>
+		<article id="0022" img="robusta.jpg" name="Robusta" position="2" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Robusta</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Price" id="04" name="price">14,99 $</property>
+			<property display="Price/10" id="05" name="priceForTen">120,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0022</property>
+		</article>
+		<article id="0022" img="robusta.jpg" name="Robusta" position="2" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Robusta</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Preis" id="04" name="price">14,99 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">120,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0022</property>
+		</article>
+		<article id="0023" img="liberica.jpg" name="Liberica" position="1" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Liberica</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Price" id="04" name="price">16,99 $</property>
+			<property display="Price/10" id="05" name="priceForTen">140,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0023</property>
+		</article>
+		<article id="0023" img="liberica.jpg" name="Liberica" position="1" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Liberica</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Preis" id="04" name="price">16,99 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">140,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0023</property>
+		</article>
+		<article id="0024" img="excelsa.jpg" name="Excelsa" position="2" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Excelsa</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Price" id="04" name="price">18,99 $</property>
+			<property display="Price/10" id="05" name="priceForTen">160,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0024</property>
+		</article>
+		<article id="0024" img="excelsa.jpg" name="Excelsa" position="2" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Excelsa</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Preis" id="04" name="price">18,99 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">160,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0024</property>
+		</article>
+	</product>
+	<product id="003" name="Cookies" type="ProductList" img="Cake_Pops.jpg">
+		<property language="EN" name="Cookies"/>
+		<text language="EN" name="description">Cookies belong to coffee or tea. We offer a wide selection of the best cookies to convert your lunchbreak into a taste experience. Lean back and enjoy our goodies, so the stress of everyday life is quickly forgotten.</text>
+		<property language="DE" name="Kekse"/>
+		<text language="DE" name="description">Zu Kaffee oder Tee gehört Gebäck. Wir bieten Ihnen eine große Auswahl an leckerstem Gebäck um Ihre Mittagspause in ein Geschmackserlebnis zu verwandeln. Lehnen Sie sich zurück und genießen Sie unsere Leckereien, so gerät der Alltagsstress schnell in Vergessenheit.</text>
+		<article id="0031" img="biscuit.jpg" name="Biscuit" position="1" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Biscuit</property>
+			<property display="PU" id="03" name="packagingUnit">200 g</property>
+			<property display="Price" id="04" name="price">1,00 $</property>
+			<property display="Price/10" id="05" name="priceForTen">10,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0031</property>
+		</article>
+		<article id="0031" img="biscuit.jpg" name="Biscuit" position="1" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Keks</property>
+			<property display="PU" id="03" name="packagingUnit">200 g</property>
+			<property display="Preis" id="04" name="price">1,00 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">10,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0031</property>
+		</article>
+		<article id="0032" img="cookie.jpg" name="Cookies" position="2" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Cookies</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Price" id="04" name="price">4,50 $</property>
+			<property display="Price/10" id="05" name="priceForTen">40,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0032</property>
+		</article>
+		<article id="0032" img="cookie.jpg" name="Cookies" position="2" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Kekse</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Preis" id="04" name="price">4,50 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">40,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0032</property>
+		</article>
+		<article id="0033" img="cake_pop.jpg" name="Cake Pops" position="1" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Cake Pops</property>
+			<property display="PU" id="03" name="packagingUnit">5 pcs</property>
+			<property display="Price" id="04" name="price">17,00 $</property>
+			<property display="Price/10" id="05" name="priceForTen">30,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0033</property>
+		</article>
+		<article id="0033" img="cake_pop.jpg" name="Cake Pops" position="1" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Kuchen Pops</property>
+			<property display="PU" id="03" name="packagingUnit">5 Stücke</property>
+			<property display="Preis" id="04" name="price">17,00 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">30,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0033</property>
+		</article>
+	</product>
+	<product id="004" name="Milk" type="ProductList" img="milk.jpg">
+		<property language="EN" name="Milk"></property>
+		<text language="EN" name="description">Even Cleopatra bathed in milk for a pure skin. Dive into our variety of enjoyment and tolerability. Whether normal cow's milk, lactose-free milk, or even vegan almond milk - there is something for everyone.</text>
+		<property language="DE" name="Milch"></property>
+		<text language="DE" name="description">Schon Kleopatra badete für eine reine Haut in Milch. Tauchen Sie ein in unsere Variantenvielfalt von Genuss und Verträglichkeit. Ob normale Kuhmilch, laktosefreie Milch für Allergiker, oder sogar vegane Mandelmilch - es ist für jeden was dabei.</text>
+		<article id="0041" img="whole_milk.jpg" name="Whole milk" position="1" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Whole milk</property>
+			<property display="PU" id="03" name="packagingUnit">1 L</property>
+			<property display="Price" id="04" name="price">1,10 $</property>
+			<property display="Price/10" id="05" name="priceForTen">10,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0041</property>
+		</article>
+		<article id="0041" img="whole_milk.jpg" name="Whole milk" position="1" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Vollmilch</property>
+			<property display="PU" id="03" name="packagingUnit">1 L</property>
+			<property display="Preis" id="04" name="price">1,10 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">10,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0041</property>
+		</article>
+		<article id="0042" img="evaporated_milk.png" name="Evaporated milk" position="2" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Evaporated milk</property>
+			<property display="PU" id="03" name="packagingUnit">0,5 L</property>
+			<property display="Price" id="04" name="price">1,10 $</property>
+			<property display="Price/10" id="05" name="priceForTen">10,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0042</property>
+		</article>
+		<article id="0042" img="evaporated_milk.png" name="Evaporated milk" position="2" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Kondensmilch</property>
+			<property display="PU" id="03" name="packagingUnit">0,5 L</property>
+			<property display="Preis" id="04" name="price">1,10 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">10,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0042</property>
+		</article>
+		<article id="0043" img="almond_milk.png" name="Almond milk" position="1" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Almond milk</property>
+			<property display="PU" id="03" name="packagingUnit">1 L</property>
+			<property display="Price" id="04" name="price">3,40 $</property>
+			<property display="Price/10" id="05" name="priceForTen">30,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0043</property>
+		</article>
+		<article id="0043" img="almond_milk.png" name="Almond milk" position="1" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>	
+			<property display="Sorte" id="02" name="type">Mandel Milch</property>
+			<property display="PU" id="03" name="packagingUnit">1 L</property>
+			<property display="Preis" id="04" name="price">3,40 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">30,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0043</property>
+		</article>
+		<article id="0044" img="lactose_free_milk.png" name="Laktose-free milk" position="2" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Laktose-free milk</property>
+			<property display="PU" id="03" name="packagingUnit">1 L</property>
+			<property display="Price" id="04" name="price">2,20 $</property>
+			<property display="Price/10" id="05" name="priceForTen">20,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0044</property>
+		</article>
+		<article id="0044" img="lactose_free_milk.png" name="Laktose-free milk" position="2" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>	
+			<property display="Sorte" id="02" name="type">Laktose-freie Milch</property>
+			<property display="PU" id="03" name="packagingUnit">1 L</property>
+			<property display="Preis" id="04" name="price">2,20 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">20,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0044</property>
+		</article>
+	</product>
+	<product id="005" name="Sugar" type="ProductList" img="sugar.jpg">
+		<property language="EN" name="Sugar"/>
+		<text language="EN" name="description">For our sweet coffee and tea gourmets we offer a colorful assortment of different sweeteners. From refined sugar to our gourmet rock candy you will find everything in order to follow your sweet cravings. Sweeten your day with our sugar.</text>
+		<property language="DE" name="Zucker"/>
+		<text language="DE" name="description">Für unsere süßen Kaffee- und Teegenieser bieten wir ein buntes Sortiment unterschiedlichster Süßungsmitteln. Vom raffinierten Zucker bis hin zu unserem Feinschmecker Kandiszucker finden Sie alles um Ihren süßen Gelüsten nachzugehen. Versüßen Sie Ihren Tag mit Zucker von Coffeeness.</text>
+		<article id="0051" img="refined_sugar.jpg" name="Refined sugar" position="1" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Refined sugar</property>
+			<property display="PU" id="03" name="packagingUnit">1 kg</property>
+			<property display="Price" id="04" name="price">1,10 $</property>
+			<property display="Price/10" id="05" name="priceForTen">10,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0051</property>
+		</article>
+		<article id="0051" img="refined_sugar.jpg" name="Refined sugar" position="1" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Raffinierter Zucker</property>
+			<property display="PU" id="03" name="packagingUnit">1 kg</property>
+			<property display="Preis" id="04" name="price">1,10 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">10,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0051</property>
+		</article>
+		<article id="0052" img="brown_sugar.jpg" name="Brown sugar" position="2" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Brown sugar</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Price" id="04" name="price">2,20 $</property>
+			<property display="Price/10" id="05" name="priceForTen">20,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0052</property>
+		</article>
+		<article id="0052" img="brown_sugar.jpg" name="Brown sugar" position="2" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Braun Zucker</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Preis" id="04" name="price">2,20 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">20,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0052</property>
+		</article>
+		<article id="0053" img="rock_sugar.jpg" name="Rock sugar" position="1" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Rock sugar</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Price" id="04" name="price">4,50 $</property>
+			<property display="Price/10" id="05" name="priceForTen">40,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0053</property>
+		</article>
+		<article id="0053" img="rock_sugar.jpg" name="Rock sugar" position="1" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Kandiszucker</property>
+			<property display="PU" id="03" name="packagingUnit">500 g</property>
+			<property display="Preis" id="04" name="price">4,50 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">40,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0053</property>
+		</article>
+		<article id="0054" img="sweetner.jpg" name="Sweetener" position="2" type="ProductList" language="EN">
+			<property display="Image" id="01" name="type"></property>
+			<property display="Type" id="02" name="type">Sweetener</property>
+			<property display="PU" id="03" name="packagingUnit">100 g</property>
+			<property display="Price" id="04" name="price">14,50 $</property>
+			<property display="Price/10" id="05" name="priceForTen">140,00 $</property>
+			<property display="Articlenr." id="06" name="artnr">pka0054</property>
+		</article>
+		<article id="0054" img="sweetner.jpg" name="Sweetener" position="2" type="ProductList" language="DE">
+			<property display="Abbildung" id="01" name="type"></property>
+			<property display="Sorte" id="02" name="type">Süßstoff</property>
+			<property display="PU" id="03" name="packagingUnit">100 g</property>
+			<property display="Preis" id="04" name="price">14,50 €</property>
+			<property display="Preis/10" id="05" name="priceForTen">140,00 €</property>
+			<property display="Artikelnr." id="06" name="artnr">pka0054</property>
+		</article>
+	</product>
+</coffeenessData>

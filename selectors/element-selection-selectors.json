@@ -1,0 +1,15 @@
+{
+    "elementSelection":"[aria-describedby='cdk-describedby-message-57']",
+    "stackPanel":".cdk-overlay-pane",
+    "selectStack":"mat-select[role='listbox']",
+    "sideToolBar":".pw-side-toolbar",
+    "stackTable":"#StackTable",
+    "clearStack":"#clearList",
+    "stackPanelToolBar":"#elementTab1",
+    "searchBar":"input[type='search']",
+    "buttonGroup":".select_all_button",
+    "Basket":"#BasketTable",
+    "saveProject":"#save",
+    "generateOutput":"#nav_pub_sel",
+    "stackElem":"#stackelm"
+}

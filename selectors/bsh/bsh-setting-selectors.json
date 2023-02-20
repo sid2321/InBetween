@@ -1,0 +1,5 @@
+{
+    "uploadCsv":"#csvfile",
+    "uploadButton":".uploadButton",
+    "uploadcsvBuilder":"#csvupload"
+}
