@@ -1,0 +1,4 @@
+{
+    "appButton":"[alt='InBetween']",
+    "dropDownPanel":".mat-menu-panel"
+}

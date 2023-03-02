@@ -139,15 +139,13 @@ Cypress.Commands.add('loginWithoutCaching', (userID, password, product,url) => {
                     break;  
                 case 'Marketing Board':
                         cy.get('ul').find('li').eq(3).click();
-                    break;        
-                case 'Marketing Board':
-                        cy.get('ul').find('li').eq(4).click();
-                    break;    
+                    break;         
                 case 'Publication Planner':
-                        cy.get('ul').find('li').eq(5).click();
+                        cy.get('ul').find('li').eq(4).click();
                     break;
                 case 'Job Automation':
-                        cy.get('ul').find('li').eq(6).click();           
+                        cy.get('ul').find('li').eq(5).click();
+                    break;               
                 default:
                 cy.get(loginScreenSelectors.loginForm).within(() => {
                         cy.get('ul').find('li').eq(1).click();
@@ -158,6 +156,38 @@ Cypress.Commands.add('loginWithoutCaching', (userID, password, product,url) => {
         })
 })
 
+Cypress.Commands.add('GenerateUsingPublisher', (project,publication,format) => {
+    cy.get('#s2id_projectList').within(() =>{
+        cy.get(".select2-arrow").click({force:true})
+    })
+    cy.wait(2000)
+    cy.get('#select2-drop').within(() => {
+        cy.contains(project).click({force:true})
+    })
+    cy.get('#s2id_generationTypeList').within(() => {
+        cy.get(".select2-arrow").click({force:true})
+    })
+    cy.wait(2000)
+    cy.get('#select2-drop').within(() => {
+        cy.contains('Publication').click({force:true})
+    })
+    cy.get('#s2id_publicationList').within(() => {
+        cy.get(".select2-arrow").click({force:true})
+    })
+    cy.wait(2000)
+    cy.get('#select2-drop').within(() => {
+        cy.contains(publication).click({force:true})
+    })
+    cy.get('#s2id_outputFormatList').within(() => {
+        cy.get(".select2-arrow").click({force:true})
+    })
+    cy.wait(2000)
+    cy.get('#select2-drop').within(() => {
+        cy.contains(format).click({force:true})
+    })
+    cy.get('#btnGenerate').click({force:true})
+    cy.get('.progress-bar', { timeout: 25000, interval: 600 }).should('have.attr','aria-valuenow','100')
+})
 
 Cypress.Commands.add('inValidLogin', (userID, password, product) => {
         cy.title().should('eq','InBetween SSO');

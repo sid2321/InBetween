@@ -9,6 +9,7 @@ module.exports = defineConfig({
   viewportWidth: 1280,
   viewportHeight: 720,
   preserveOriginalScreenshot: true,
+  watchForFileChanges:false,
   "retries": {
     // Configure retry attempts for `cypress run`
     // Default is 0

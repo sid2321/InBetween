@@ -1,6 +1,7 @@
 {
     "userName":"manager",
     "userPassword":"manager",
-    "login_url":"http://localhost:8080/InBetween"
+    "login_url":"http://localhost:8080/InBetween",
+    "publisherLogin_URL":"http://localhost:8080/IBPublisher"
 
 }

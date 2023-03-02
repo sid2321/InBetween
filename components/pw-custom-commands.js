@@ -1,5 +1,6 @@
 import loginScreenSelectors from '../selectors/login-screen-selectors.json'
 import elementSelectionSelectors from '../selectors/element-selection-selectors.json'
+import annotationManager from '../selectors/annotation-selectors.json'
 //This Command will login user based on product
 // userID : userID of the user
 // password : password of the user
@@ -107,6 +108,12 @@ Cypress.Commands.add('verifyAndRenameDownlodedFile',(renameFileName) => {
         cy.get('mat-cell').eq(4).find('.geneDeleteButton').click();
     })
     cy.get('.downloadButton',{ timeout: 25000, interval: 600 }).should('not.exist');
+})
+
+Cypress.Commands.add('waitforimageLoad',() => {
+    cy.get('.spinner',{ timeout: 2500000000, interval: 600 }).as('spinner').should('exist')
+    cy.get(annotationManager.image,{ timeout: 2500000000, interval: 600 }).should('exist')
+
 })
 
 Cypress.Commands.add('generateExcelFiles', (mode) => {
