@@ -1,6 +1,25 @@
 import loginScreenSelectors from '../selectors/login-screen-selectors.json'
 import elementSelectionSelectors from '../selectors/element-selection-selectors.json'
 import annotationManager from '../selectors/annotation-selectors.json'
+import elementBuilderManager from '../selectors/element-builder-selectors.json'
+
+Cypress.Commands.add('dragCurentlinkstopage', (pageID,element) => {
+
+    cy.get(`#basket_table > .mat-card-content #StackTable > app-table > .table > .divWidth > #Stack > #stackelm > :nth-child(${element})`).then(el => {
+        const draggable = el[0]  // Pick up this
+        draggable.dispatchEvent(new MouseEvent('mousemove'));
+        cy.wait(900)
+        draggable.dispatchEvent(new MouseEvent('mousedown'));
+        cy.get(pageID).then(el => {
+            const droppable = el[0]  // Drop over this
+            const coords = droppable.getBoundingClientRect();
+            cy.log(coords)
+            draggable.dispatchEvent(new MouseEvent('mousemove', { clientX: 10, clientY: 0 }));
+            draggable.dispatchEvent(new MouseEvent('mousemove', { clientX: coords.x + 30, clientY: coords.y + 40 }));
+            draggable.dispatchEvent(new MouseEvent('mouseup', { clientX: coords.x + 20, clientY: coords.y + 40 }));
+        })
+    })
+})
 //This Command will login user based on product
 // userID : userID of the user
 // password : password of the user
@@ -90,6 +109,13 @@ Cypress.Commands.add('disablePopUp',() => {
     cy.window().then((win) => {
         // ✅ removes it
         win.onbeforeunload = null
+    })
+})
+
+Cypress.Commands.add('addCommentsToConversion', (message) => {
+    cy.get(elementBuilderManager.dialogBox).within(() => {
+        cy.get('input').type(message)
+        cy.get(elementBuilderManager.okMessage).click({force:true})
     })
 })
 

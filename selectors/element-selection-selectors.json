@@ -11,5 +11,7 @@
     "Basket":"#BasketTable",
     "saveProject":"#save",
     "generateOutput":"#nav_pub_sel",
-    "stackElem":"#stackelm"
+    "stackElem":"#stackelm",
+    "quickPreview":"[alt='Quick preview']",
+    "previewText":".floating-text"
 }

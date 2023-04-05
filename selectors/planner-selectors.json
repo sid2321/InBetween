@@ -1,4 +1,6 @@
 {
     "appButton":"[alt='InBetween']",
-    "dropDownPanel":".mat-menu-panel"
+    "dropDownPanel":".mat-menu-panel",
+    "projSelPlanner":"#sel_proj_for_Planner",
+    "projecSelPlannerpanel":"#sel_proj_for_Planner-panel"
 }

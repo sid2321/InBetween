@@ -27,7 +27,7 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.visit(`${userData.publisherLogin_URL}/`)
         cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
         cy.wait(5000)
-        cy.GenerateUsingPublisher('IB_Default_Showcase_V1','Fresh Food _dup','PDF')
+        cy.GenerateUsingPublisher('IB_Default_Showcase_V1','Fresh Food','PDF')
         cy.get('#jobListTable').as('jobList').within(() => {
             cy.get('td').eq(1).as('filename')
         })

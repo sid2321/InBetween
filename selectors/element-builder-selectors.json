@@ -2,9 +2,20 @@
     "topSubMenu":"#subMenu",
     "playArea":"#vscroll",
     "toolBar":"#builderTab5",
+    "previewPage":".previewState",
     "previewButton":"[aria-describedby='cdk-describedby-message-33']",
     "zoomPagePlanner":".mobile_dropdown_zoom ",
     "mainMenu":"#mainMenu",
     "stacktable":"#StackTable",
-    "playAreaDrop":"#playAreaContainer"
+    "playAreaDrop":"#playAreaContainer",
+    "workFlowBar":".workFlowBar",
+    "closeDialog":".dialogCloseButton",
+    "dialogBox":"#dialogBox",
+    "okMessage":"button[type='submit']",
+    "conIndesign":".indesignConv",
+    "convertApproval":"#convertYes",
+    "createSection":"#createSectionText",
+    "sectionHeader":".headerText",
+    "editSectionHeader":".headerTextEdit",
+    "currentLinks":"#basket_table > .mat-card-content #StackTable > app-table > .table > .divWidth > #Stack > #stackelm"
 }

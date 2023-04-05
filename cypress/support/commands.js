@@ -152,7 +152,13 @@ Cypress.Commands.add('loginWithoutCaching', (userID, password, product,url) => {
                 })       
             }
             cy.get(loginScreenSelectors.loginButton).click();
+            if(product==='Publisher'){
+                cy.url().should('contain', `/IBPublisher/`)
+            }else{
+
             cy.url().should('contain', `/${app}/`)
+            }
+            
         })
 })
 
@@ -222,6 +228,16 @@ Cypress.Commands.add('inValidLogin', (userID, password, product) => {
             }
             cy.get(loginScreenSelectors.loginButton).click();
         })
+})
+
+Cypress.Commands.add('toolTipValidate', (selector) => {
+    cy.get(selector)
+    .invoke('show')
+    .trigger('mouseenter')
+    .wait(1000).then(() => {
+        cy.get('mat-tooltip-component').find('div')
+        .should('have.text','InBetween Apps')
+    })   
 })
 
 const compareSnapshotCommand = require('cypress-image-diff-js/dist/command')

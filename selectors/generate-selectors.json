@@ -1,4 +1,5 @@
 {
    "selectedPages":"[aria-label='toggle Generate Selected Pages']",
-   "progressBar":".progress-bar"
+   "progressBar":".progress-bar",
+   "previewPublication":".preview_Publication"
 }
