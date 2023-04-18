@@ -39,6 +39,10 @@
         "pubBosch":" Test_2021-07-08_GR-run "
     },
     "akeneo":{
-        "projectV1":" IB_Default_Showcase_V1 "
+        "projectV1":" IB_Default_Showcase_V1 ",
+        "projectV2":" IB_Default_Showcase_V2 ",
+        "projectV3":" IB_Akeneo_Showcase_V3 ",
+        "projectV4":" IB_Akeneo_Showcase_V4 ",
+        "wco_showcase":" WCO_Showcase "
     }
 }

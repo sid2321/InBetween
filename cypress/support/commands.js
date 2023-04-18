@@ -162,39 +162,6 @@ Cypress.Commands.add('loginWithoutCaching', (userID, password, product,url) => {
         })
 })
 
-Cypress.Commands.add('GenerateUsingPublisher', (project,publication,format) => {
-    cy.get('#s2id_projectList').within(() =>{
-        cy.get(".select2-arrow").click({force:true})
-    })
-    cy.wait(2000)
-    cy.get('#select2-drop').within(() => {
-        cy.contains(project).click({force:true})
-    })
-    cy.get('#s2id_generationTypeList').within(() => {
-        cy.get(".select2-arrow").click({force:true})
-    })
-    cy.wait(2000)
-    cy.get('#select2-drop').within(() => {
-        cy.contains('Publication').click({force:true})
-    })
-    cy.get('#s2id_publicationList').within(() => {
-        cy.get(".select2-arrow").click({force:true})
-    })
-    cy.wait(2000)
-    cy.get('#select2-drop').within(() => {
-        cy.contains(publication).click({force:true})
-    })
-    cy.get('#s2id_outputFormatList').within(() => {
-        cy.get(".select2-arrow").click({force:true})
-    })
-    cy.wait(2000)
-    cy.get('#select2-drop').within(() => {
-        cy.contains(format).click({force:true})
-    })
-    cy.get('#btnGenerate').click({force:true})
-    cy.get('.progress-bar', { timeout: 25000, interval: 600 }).should('have.attr','aria-valuenow','100')
-})
-
 Cypress.Commands.add('inValidLogin', (userID, password, product) => {
         cy.title().should('eq','InBetween SSO');
         cy.get(loginScreenSelectors.userName).type(userID);
