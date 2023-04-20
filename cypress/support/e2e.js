@@ -23,6 +23,7 @@ import '../../components/pa-custom-commands'
 import '../../components/ja-custom-commands'
 // Import commands.js using ES2015 syntax:
 import './commands'
+import '../../components/akeneo-publisher-custom-commands'
 
 
 after(() => {
@@ -138,6 +139,12 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   // returning false here prevents Cypress from
   // failing the test
   return false
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+  if (err.message.includes("null (reading 'reload')")) {
+    return false
+  }
 })
 
 Cypress.Commands.addAll(

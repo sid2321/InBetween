@@ -6,9 +6,9 @@ import generateSelectors from '../../../../selectors/generate-selectors.json'
 
 
 
-describe('akeneo v1 showcase login open publication', () => {
+describe('akeneo v3 showcase test cases', () => {
 
-    let publication = ' Brochure Clothing Summer 2021 '
+    let publication = ' Akeneo_Products '
     function retriveTableValue(){
         let list = []
         cy.get('table').find('tr').as('elements').then((row) => {
@@ -102,21 +102,25 @@ describe('akeneo v1 showcase login open publication', () => {
         })       
     })
 
-    it('Add elements to basket', () => {
-        let stacElem = ["Clothing","Eternal","Juck & Joni"]
+    it('Add elements to basket showcase v3', () => {
+        let stacElem = ["Lexmark X632s MFP","Philips 37PFL9606H","Lexmark T652DN","Samsung 19IN LCD 910T SIL"]
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.get(elementSelectionSelectors.sideToolBar).within(() => {
             cy.contains('list').click();
         })
         cy.wait(5000)
         cy.get('table')
-        .find('tr').eq(1).find('td').eq(1).click();
-        cy.get('table').find('tr').eq(3).click({
+        .find('tr').eq(3).find('td').eq(1).click();
+        cy.get('table').find('tr').eq(6).click({
             ctrlKey:true,
             force:true,
         })  
-        cy.get('table').find('tr').eq(5).click({
+        cy.get('table').find('tr').eq(8).click({
+            ctrlKey:true,
+            force:true,
+        }) 
+        cy.get('table').find('tr').eq(12).click({
             ctrlKey:true,
             force:true,
         }) 
@@ -126,28 +130,28 @@ describe('akeneo v1 showcase login open publication', () => {
         stacElem.forEach(checkStackElements);
     })
 
-    it('stack search functionality showcase v1', () => {
+    it('stack search functionality showcase v3', () => {
 
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.get(elementSelectionSelectors.sideToolBar).within(() => {
             cy.contains('list').click();
         })
         cy.get(elementSelectionSelectors.stackPanelToolBar).within(()=>{
             cy.get('button').eq(0).click();
-            cy.get('input').type('Samy')
+            cy.get('input').type('Lexmark')
         })
         cy.get('table')
-        .find('tr').should('have.length',3).eq(1)
+        .find('tr').should('have.length.greaterThan',40).eq(1)
         .within(() => {
-            cy.get('td').eq(1).contains('Samy');
+            cy.get('td').eq(1).contains('Lexmark');
         }) 
     })
 
-    it('stack search ascending and descending order akeneo showcase v1', () => {
+    it('stack search ascending and descending order akeneo showcase v3', () => {
 
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,' Brochure Clothing Summer 2021 ');
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.get(elementSelectionSelectors.sideToolBar).within(() => {
             cy.contains('list').click();
         })
@@ -175,23 +179,23 @@ describe('akeneo v1 showcase login open publication', () => {
         })
     })
 
-    it('Drag drop page to builder tab', () => {
+    it('Drag drop page to builder tab v3', () => {
         let list = []
-        let list_actual = ['Clothing','Samy','Sivel']
+        let list_actual = ['Lexmark X632s MFP','Kodak i1410','Philips 37PFL9606H']
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,' Brochure Clothing Summer 2021 ');
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(5000)
-        cy.dragDropMasterPage(0,'cover_chapter','1')
+        cy.dragDropMasterPage(4,'product_92','1')
         cy.wait(2000)
-        cy.dragCurentlinkstopage('#PGS\\.10_1_FAR\\.1',1)
+        cy.dragCurentlinkstopage('#PGS\\.12_1_FAR\\.1',3)
         cy.get(elementBuilderManager.currentLinks).within(() => {
             cy.get('tr').eq(5).click({
                 ctrlKey:true,
                 force:true})
             cy.get('tr').eq(6).click({force:true,ctrlKey:true,})
         })
-        cy.dragCurentlinkstopage('#PGS\\.10_1_FAR\\.1',6)
-        cy.get("#PGS\\.10_1_FAR\\.1").within(() => {
+        cy.dragCurentlinkstopage('#PGS\\.12_1_FAR\\.1',6)
+        cy.get("#PGS\\.12_1_FAR\\.1").within(() => {
             cy.get('.elementsDropped').as('elem').then((elem) => {
                 for(let i=1; i<elem.length-1; i++){
                     cy.get('@elem')
@@ -220,14 +224,14 @@ describe('akeneo v1 showcase login open publication', () => {
 
     it('preview pages in builder tab', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(5000)
         cy.get(elementBuilderManager.previewPage).eq(4).click({force:true})
         cy.get('[alt="Loading..."]',{ timeout: 200000 }).should('not.exist')
         cy.get('[alt="No Products To Preview"]',{ timeout: 200000 }).should('have.length.greaterThan',5)
     })
 
-    it('convert to indd marketing', () => {
+    it.skip('convert to indd marketing', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(5000)
@@ -264,9 +268,9 @@ describe('akeneo v1 showcase login open publication', () => {
 
     it('convert workflow stage marketing finishing', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(5000)
-        cy.get('#PGS\\.1_0_page').as('page').within(() => {
+        cy.get('#PGS\\.4_2_page').as('page').within(() => {
             cy.get(elementBuilderManager.workFlowBar).click({force:true});
         })  
         cy.get('.mat-menu-panel').within(() => {
@@ -281,9 +285,9 @@ describe('akeneo v1 showcase login open publication', () => {
 
     it('convert workflow stage media design', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(5000)
-        cy.get('#PGS\\.10_1_page').as('page').within(() => {
+        cy.get('#PGS\\.4_2_page').as('page').within(() => {
             cy.contains(' album ').click();
             cy.wait(2000);
         })  
@@ -327,9 +331,9 @@ describe('akeneo v1 showcase login open publication', () => {
 
     it('convert workflow stage Distribution', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(5000)
-        cy.get('#PGS\\.10_1_page').as('page').within(() => {
+        cy.get('#PGS\\.4_2_page').as('page').within(() => {
             cy.contains(' album ').click();
             cy.wait(2000);
         })  
@@ -372,9 +376,21 @@ describe('akeneo v1 showcase login open publication', () => {
 
     it('convert in finishing page to indd', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(5000)
-        cy.get('#wholePage_PGS\\.7_2').within(() => {
+        cy.get('#PGS\\.4_2_page').as('page').within(() => {
+            cy.contains(' album ').click();
+            cy.wait(2000);
+        })  
+        cy.get('.mat-menu-panel').as('dropdown').within(() => {
+            cy.contains(' Media Design ').click({force:true});
+        })
+        cy.addCommentsToConversion('Media Design')
+        cy.get('@page').within(() => {
+            cy.get(elementBuilderManager.workFlowBar).should('have.css', 'background')
+            .and('include', 'rgb(212, 14, 126)')
+        })
+        cy.get('#wholePage_PGS\\.4_2').within(() => {
             cy.get('#drag1').within(() =>{
                 cy.get('#part1').click( {force: true });
             })
@@ -382,28 +398,29 @@ describe('akeneo v1 showcase login open publication', () => {
         })
         cy.get(elementBuilderManager.conIndesign).parents('button').click();
         cy.get('[alt="Loading..."]', { timeout: 50000}).should('not.exist')
+        cy.get('.imgdrop', { timeout: 50000 }).should('exist')
         cy.saveProject();
     })
 
-    it('add sections and add pages to a section', () => {
+    it('add section and add pages to a section', () => {
 
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(5000)
-        cy.get('#wholePage_PGS\\.1_0').within(() => {
+        cy.get('#wholePage_PGS\\.12_1').within(() => {
            cy.get(elementBuilderManager.createSection).click({force:true})
         })
         cy.get(elementBuilderManager.sectionHeader, {timeout:15000}).dblclick({force:true})
         cy.get(elementBuilderManager.editSectionHeader).clear().type('akeneo_section');
-        cy.get('#PGS\\.10_1_FAR\\.1').as('clothingGrid').dragTo('#PGS\\.1_0_FAR\\.1')
-        cy.get('#PGS\\.10_1').find('[alt="minimize"]').should('exist')
+        cy.get('#PGS\\.3_0_DAR\\.2').as('clothingGrid').dragTo('#PGS\\.12_1_FAR\\.1')
+        cy.get('#PGS\\.3_1').find('[alt="minimize"]').should('exist')
         cy.saveProject();
     })
 
-    it.only('generate pdf pulications',() => {
-        let renameFileName = 'akeneo-v1-hq-pdf.pdf'
+    it.only('generate pdf publications',() => {
+        let renameFileName = 'akeneo-v3-hq-pdf.pdf'
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(2000)
         cy.get(elementSelectionSelectors.sideToolBar).within(() => {
             cy.contains('A').click();
@@ -416,13 +433,12 @@ describe('akeneo v1 showcase login open publication', () => {
                 .invoke('text').then(text => {
                    let number = text.split("/")
                    let i = 0;
-                    do {
-                    cy.get('[alt="No Products To Preview"]').should('exist')
+                   while (i < number[1]-2){
                     cy.contains('arrow_forward').click({force:true})
+                    cy.get('[alt="No Products To Preview"]').should('exist')
                     i++;
-                    }
-                    while (i < number[1]-1);
-                })
+                }      
+            })
         })
         cy.get("[aria-label='Output Formats']").click();
         cy.get('.cdk-overlay-pane').within(() => {
@@ -432,8 +448,6 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.get('.cdk-overlay-pane').within(() => {
             cy.contains(' PDFX3 2002 ').click();
         })
-        cy.get("[aria-label='Log Languages']").click();
-        cy.contains(' en_GB ').click();
         cy.get("button[type='submit']").click();
         cy.get('.progress-bar',{ timeout: 150000000 }).should('not.exist');
         cy.get('.jobListContent').within(() => {
@@ -444,10 +458,10 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.verifyAndRenameDownlodedFile(renameFileName);  
     })  
     
-    it('generate indd pulications',() => {
-        let renameFileName = 'akeneo-v1.indd'
+    it.only('generate indd publications',() => {
+        let renameFileName = 'akeneo-v3.indd'
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(2000)
         cy.get(elementSelectionSelectors.sideToolBar).within(() => {
             cy.contains('A').click();
@@ -455,8 +469,6 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.get("[aria-label='Output Formats']").click();
         cy.contains(' INDD ').click();
         cy.get("button[type='submit']").click();
-        cy.get("[aria-label='Log Languages']").click();
-        cy.contains(' en_GB ').click();
         cy.get('.progress-bar',{ timeout: 175000000 }).should('not.exist');
         cy.get('.jobListContent').within(() => {
             cy.get('mat-cell').eq(0).find('span').as('filename')

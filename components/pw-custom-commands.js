@@ -127,7 +127,7 @@ Cypress.Commands.add('verifyAndRenameDownlodedFile',(renameFileName) => {
         let downloadFilename = join(downloadsFolder, file)
         let result_downloadFilename = downloadFilename.replace("/", "\\");
         cy.log(result_downloadFilename);
-        cy.exec(`rename ${result_downloadFilename} ${renameFileName}`)
+        cy.exec(`rename "${result_downloadFilename}" ${renameFileName}`)
 
     }) 
     cy.get('.jobListContent').within(() => {
@@ -135,6 +135,35 @@ Cypress.Commands.add('verifyAndRenameDownlodedFile',(renameFileName) => {
     })
     cy.get('.downloadButton',{ timeout: 25000, interval: 600 }).should('not.exist');
 })
+
+Cypress.Commands.add('verifyAndRenameDownlodedFileakeneo',(renameFileName) => {
+    const { join } = require('path')
+    cy.get('@filename').invoke('text').then((file) => {
+        cy.window().document().then(function (doc) {
+            doc.addEventListener('click', () => {
+              setTimeout(() => { doc.location.reload( { force:true }) }, 2000)
+            })
+            cy.intercept('/', (req) => {
+                req.reply((res) => {
+                  expect(res.statusCode).to.equal(200);
+                });
+            });
+            cy.get('.downloadButton').parent().should('exist').click();
+        })
+        cy.verifyDownload(file, { timeout: 25000, interval: 600 });
+        const downloadsFolder = Cypress.config('downloadsFolder');
+        let downloadFilename = join(downloadsFolder, file)
+        let result_downloadFilename = downloadFilename.replace("/", "\\");
+        cy.log(result_downloadFilename);
+        cy.exec(`rename "${result_downloadFilename}" ${renameFileName}`)
+
+    }) 
+    /*cy.get('.jobListContent').within(() => {
+        cy.get('mat-cell').eq(4).find('.geneDeleteButton').click();
+    })*/
+    cy.get('.downloadButton',{ timeout: 25000, interval: 600 }).should('not.exist');
+})
+
 
 Cypress.Commands.add('waitforimageLoad',() => {
     cy.get('.spinner',{ timeout: 2500000000, interval: 600 }).as('spinner').should('exist')
