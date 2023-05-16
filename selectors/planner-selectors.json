@@ -2,5 +2,21 @@
     "appButton":"[alt='InBetween']",
     "dropDownPanel":".mat-menu-panel",
     "projSelPlanner":"#sel_proj_for_Planner",
-    "projecSelPlannerpanel":"#sel_proj_for_Planner-panel"
+    "projecSelPlannerpanel":"#sel_proj_for_Planner-panel",
+    "projectPubPlanner":"#sel_pub_for_Planner",
+    "projectPubPlannerPanel":"#sel_pub_for_Planner-panel",
+    "dynamicshTitle":"#titleSpan_dynamisch",
+    "expandDynamisch":"#expandButton_dynamisch",
+    "previewButton":".pub_preview-btn",
+    "addSection":"#Add_Section",
+    "topToolbar":"mat-toolbar",
+    "appDashboard":"app-dashboard",
+    "toolTip":"mat-tooltip-component",
+    "webText":"#majorText",
+    "dropdownCard":".mat-menu-content",
+    "searchPublication":"[placeholder='Search']",
+    "newPub":"#addButton",
+    "createNewPubForm":"mat-dialog-container",
+    "projectPanel":"[panelclass='panelClassForCNProjects']",
+    "dropdownProject":".panelClassForCNProject"
 }

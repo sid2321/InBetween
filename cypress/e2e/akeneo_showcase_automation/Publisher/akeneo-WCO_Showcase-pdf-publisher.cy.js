@@ -3,10 +3,10 @@ import userData from '../../../../fixtures/user_info_akeneo.json'
 import settingsSelectors from '../../../../selectors/settings-selection-selectors.json'
 import elementSelectionSelectors from '../../../../selectors/element-selection-selectors.json'
 
-describe('akeneo v1 showcase login open publication', () => {
+describe('akeneo wco showcase login open publication', () => {
 
     beforeEach(() => {
-        cy.loginWithCaching(userData.userName,userData.userPassword,'Publisher',userData.login_url);
+        cy.login(userData.userName,userData.userPassword,'Publisher',userData.login_url);
         cy.pageLoaded();
     })
    
@@ -28,6 +28,7 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
         cy.verifyDownload('.zip', { contains: true });
         cy.get('#deleteAll').click({force:true})
+        cy.wait(2000)
         cy.get('#noJobsMessage').should('exist')
         cy.clearAllCookies()
         cy.clearAllSessionStorage()
@@ -37,18 +38,16 @@ describe('akeneo v1 showcase login open publication', () => {
 
     let publications =  ['Clothing_Catalog','Clothing_Dress','PriceList_Catalog',
     'Summer_Catalog','Trousers']
-
     publications.forEach((publication) => {
 
         it(`WCO_Showcase  - ${publication}`,() => {
-    
+
             cy.visit(`${userData.publisherLogin_URL}/`)
             cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
             cy.wait(5000)
-            cy.GenerateUsingPublisher('IWCO_Showcase',publication,'INDD')
+            cy.GenerateUsingPublisher('WCO_Showcase',publication,'PDF')
          }) 
 
     })
-  
     
 })

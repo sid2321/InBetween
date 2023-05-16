@@ -1,0 +1,15 @@
+{
+    "akeneoPIMUser":"#username_input",
+    "akeneoPIMPass":"#password_input",
+    "pimLogin":"#_submit",
+    "pimProducts":"#pim-menu-products",
+    "productSearchbox":".AknFilterBox-search",
+    "searchedRow":".AknGrid-bodyCell string-cell",
+    "productTitle":".AknTitleContainer-title",
+    "productDescription":".AknTextareaField AknTextareaField--localizable ",
+    "productPrice":".AknTextField AknTextField--noRightRadius",
+    "productSave":".AknButton AknButton--apply save",
+    "pimLogout":"AknDropdown-menuLink logout",
+    "pimTitle":".AknDropdown-menuLink logout"
+
+}

@@ -1,14 +1,14 @@
 import userData from '../../../fixtures/user_info.json'
 import jaDashboard from '../../../selectors/jobAutomation/ja-dashboard-selectors.json'
 beforeEach(() => {
-    cy.login('manager','manager','Job Automation',userData.login_url);
+    cy.login('manager','manager','Job Automation',userData.ja_login_url);
     cy.pageLoaded();
 
 })
 
 
 it('check if all the web clients are accessible', () => {
-    cy.visit(`${userData.login_url}/#/JobAutomation/Dashboard`);
+    cy.visit(`${userData.ja_login_url}/#/JobAutomation/Dashboard`);
     //cy.get(jaDashboard.menuButton).click({force:true})
     /*cy.get(jaDashboard.menu).within(() => {
         cy.get('a').eq(0).as('wizard').should($a => {

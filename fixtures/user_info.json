@@ -5,5 +5,6 @@
     "AllowAccessControl_URL_IP" : "https://192.168.157.122:8443/InBetween",
     "AllowAccessControl_URL" : "https://localhost:8443/InBetween",
     "SingleMachine_AllowAccessControl_URL_IP" : "https://192.168.157.124:8443/InBetween",
-    "SingleMachine_AllowAccessControl_URL" : "https://localhost:8443/InBetween"
+    "SingleMachine_AllowAccessControl_URL" : "https://localhost:8443/InBetween",
+    "ja_login_url":"http://localhost:8080/InBetween"
 }

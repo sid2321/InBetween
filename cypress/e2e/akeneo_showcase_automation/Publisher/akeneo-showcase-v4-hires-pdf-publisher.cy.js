@@ -3,7 +3,7 @@ import userData from '../../../../fixtures/user_info_akeneo.json'
 import settingsSelectors from '../../../../selectors/settings-selection-selectors.json'
 import elementSelectionSelectors from '../../../../selectors/element-selection-selectors.json'
 
-describe('akeneo v3 showcase login open publication', () => {
+describe('akeneo v4 showcase login open publication', () => {
 
     beforeEach(() => {
         cy.login(userData.userName,userData.userPassword,'Publisher',userData.login_url);
@@ -36,17 +36,15 @@ describe('akeneo v3 showcase login open publication', () => {
         
     })
 
-    let publications =  ['Akeneo_Products','Catalog_2023',
-    'PC_Monitors','PC_Monitors_2023', 
-    'Price_List']
+    let publications =  ['Akeneo Demo 2023','Akeneo Products','Catalog 2022','Catalog_2023']
     publications.forEach((publication) => {
 
-        it(`IB Publisher generate showcase v3  - ${publication}`,() => {
+        it(`IB Publisher generate showcase v4  - ${publication}`,() => {
 
             cy.visit(`${userData.publisherLogin_URL}/`)
             cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
             cy.wait(5000)
-            cy.GenerateUsingPublisher('IB_Akeneo_Showcase_V3',publication,'PDF')
+            cy.GenerateUsingPublisher('IB_Akeneo_Showcase_V4',publication,'HIRES-PDF')
          }) 
 
     })

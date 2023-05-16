@@ -50,7 +50,7 @@ describe('check test cases from 11-21', () => {
         })
     })
 
-    it.only('check for new publication', () => {
+    it('check for new publication', () => {
 
         cy.visit(`${userData.login_url}/#/PublicationPlanner/Home`)
         cy.wait(2000)

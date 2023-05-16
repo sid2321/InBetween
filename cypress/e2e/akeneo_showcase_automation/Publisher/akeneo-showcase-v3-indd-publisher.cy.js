@@ -6,7 +6,7 @@ import elementSelectionSelectors from '../../../../selectors/element-selection-s
 describe('akeneo v3 showcase login open publication', () => {
 
     beforeEach(() => {
-        cy.loginWithCaching(userData.userName,userData.userPassword,'Publisher',userData.login_url);
+        cy.login(userData.userName,userData.userPassword,'Publisher',userData.login_url);
         cy.pageLoaded();
     })
    
@@ -28,6 +28,7 @@ describe('akeneo v3 showcase login open publication', () => {
         cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
         cy.verifyDownload('.zip', { contains: true });
         cy.get('#deleteAll').click({force:true})
+        cy.wait(2000)
         cy.get('#noJobsMessage').should('exist')
         cy.clearAllCookies()
         cy.clearAllSessionStorage()
@@ -46,7 +47,8 @@ describe('akeneo v3 showcase login open publication', () => {
             cy.visit(`${userData.publisherLogin_URL}/`)
             cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
             cy.wait(5000)
-            cy.GenerateUsingPublisher('IB_Default_Showcase_V3',publication,'INDD')
+           // cy.GenerateUsingPublisher('IB_Akeneo_Showcase_V3',publication,'INDD')
+           cy.GenerateUsingPublisher('IB_Akeneo_Showcase_V3',publication)
          }) 
 
     })
