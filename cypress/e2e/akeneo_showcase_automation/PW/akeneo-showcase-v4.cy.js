@@ -445,7 +445,7 @@ describe('akeneo v4 showcase test cases', () => {
             cy.contains('A').click();
         })
         cy.get(generateSelectors.previewPublication).as('previewButton').click({force:true})
-        cy.get('@previewButton',{timeout:15000000}).should('have.css', 'background')
+        cy.get('@previewButton',{timeout:180000}).should('have.css', 'background')
             .and('include', 'rgb(255, 64, 129)')
         cy.get('.pageNum').as('elem').then((elem) => {
                 cy.get('@elem')

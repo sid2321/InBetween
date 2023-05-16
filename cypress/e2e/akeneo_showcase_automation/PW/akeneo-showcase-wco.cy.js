@@ -65,15 +65,13 @@ describe('akeneo wco showcase test cases', () => {
         cy.clearAllLocalStorage()
     })
 
-    let publications =  [' Brochure Clothing Summer 2021 ',' Catalog 2022 ',
-    ' Catalog_2023 ',' Flyer Groceries 2022 ',' Flyer Outdoor 2022 ', 
-    ' Flyer Outdoor 2023 ',' Fresh Food ',' Groceries ',' Groceries 2023 ',
-    ' Jeans and Leggings ',' Packaged Food ',' Shirts and Hoodies ']
+    let publications =  [' Clothing_Catalog ',' Clothing_Dress ',
+    ' PriceList_Catalog ',' Summer_Catalog ',' Trousers ']
 
     publications.forEach((publication) => {
         it.skip(`check if publication are getting opened correctly - ${publication}`, () => {
             cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-            cy.selectPublication(projectData.akeneo.projectV1,publication);
+            cy.selectPublication(projectData.akeneo.wco_showcase,publication);
             cy.wait(5000);
         })       
     })
@@ -83,21 +81,17 @@ describe('akeneo wco showcase test cases', () => {
         let newPub = `${masterPublication}_new`
         it.skip(`check if new publication are getting created - ${masterPublication}`, () => {
             cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-            cy.createNewPublication(projectData.akeneo.projectV1,masterPublication,newPub)
+            cy.createNewPublication(projectData.akeneo.wco_showcase,masterPublication,newPub)
         })
     })
 
-    let publications_dups =  [' Brochure Clothing Summer 2021 ',' Catalog 2022 ',
-    ' Catalog_2023 ',' Flyer Groceries 2022 ',' Flyer Outdoor 2022 ', 
-    ' Flyer Outdoor 2023 ',' Fresh Food ',' Groceries ',' Groceries 2023 ',
-    ' Jeans and Leggings ',' Packaged Food ',' Shirts and Hoodies ']
 
-    publications_dups.forEach((publications_dup) => {
+    publications.forEach((publications_dup) => {
     
         let newPub = `${publications_dup}_dup`
         it.skip(`check if publication are getting opened correctly - ${publications_dup}`, () => {
             cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-            cy.duplicatePublication(projectData.akeneo.projectV1,publications_dup,newPub);
+            cy.duplicatePublication(projectData.akeneo.wco_showcase,publications_dup,newPub);
             cy.wait(5000);
         })       
     })
@@ -347,7 +341,7 @@ describe('akeneo wco showcase test cases', () => {
         cy.saveProject();
     })
 
-    it.only('add section and add pages to a section', () => {
+    it('add section and add pages to a section', () => {
 
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.wco_showcase,publication);
@@ -367,7 +361,7 @@ describe('akeneo wco showcase test cases', () => {
         cy.saveProject();
     })
 
-    it.only('generate pdf publications',() => {
+    it('generate pdf publications',() => {
         let renameFileName = 'akeneo-wco-hq-pdf.pdf'
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.wco_showcase,publication);
@@ -376,7 +370,7 @@ describe('akeneo wco showcase test cases', () => {
             cy.contains('A').click();
         })
         cy.get(generateSelectors.previewPublication).as('previewButton').click({force:true})
-        cy.get('@previewButton',{timeout:15000000}).should('have.css', 'background')
+        cy.get('@previewButton',{timeout:180000}).should('have.css', 'background')
             .and('include', 'rgb(255, 64, 129)')
         cy.get('.pageNum').as('elem').then((elem) => {
                 cy.get('@elem')
@@ -411,7 +405,7 @@ describe('akeneo wco showcase test cases', () => {
         cy.verifyAndRenameDownlodedFile(renameFileName);  
     })  
     
-    it.only('generate indd publications',() => {
+    it('generate indd publications',() => {
         let renameFileName = 'akeneo-wco_showcase.indd'
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.wco_showcase,publication);

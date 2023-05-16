@@ -3,6 +3,7 @@ import userData from '../fixtures/user_info_akeneo.json'
 import settingsSelectors from '../selectors/settings-selection-selectors.json'
 import elementSelectionSelectors from '../selectors/element-selection-selectors.json'
 import publisherSelectors from '../selectors/akeneo-Publisher-selectors.json'
+import akeneoPIMSelectors from '../selectors/akeneo-PIM-selectors.json'
 
 Cypress.Commands.add('GenerateUsingPublisher', (project,publication,format) => {
     cy.get(publisherSelectors.projectList).within(() =>{
@@ -72,6 +73,70 @@ Cypress.Commands.add('DownloadandRenameFile', (newfilename) => {
     //cy.get('@downloadButton',{ timeout: 25000, interval: 600 }).should('not.exist');
     
 }) 
+
+Cypress.Commands.add('LoginAkeneoPIM', (akeneoPIMUrl,usernamePIM,passwordPIM) => {
+    cy.visit(akeneoPIMUrl);
+    cy.get(akeneoPIMSelectors.akeneoPIMUser).type(usernamePIM);
+    cy.get(akeneoPIMSelectors.akeneoPIMPass).type(passwordPIM);
+    cy.get(akeneoPIMSelectors.pimLogin).should('be.visible');
+    cy.get(akeneoPIMSelectors.pimLogin).click();
+    cy.get(akeneoPIMSelectors.pimProducts).should('be.visible').click();
+    cy.log("Login to akeneo PIM successfull");
+})
+
+Cypress.Commands.add('GenerateINDDPackagingPublisher', (project,publication) => {
+    cy.get(publisherSelectors.projectList).within(() =>{
+        cy.get(publisherSelectors.selectArrow).click({force:true})
+    })
+    cy.wait(2000)
+    cy.get(publisherSelectors.selectDropdown).within(() => {
+        cy.contains(project).click({force:true})
+    })
+    cy.get(publisherSelectors.generationType).within(() => {
+        cy.get(publisherSelectors.selectArrow).click({force:true})
+    })
+    cy.wait(2000)
+    cy.get(publisherSelectors.selectDropdown).within(() => {
+        cy.contains('Publication').click({force:true})
+    })
+    cy.get(publisherSelectors.publicationList).within(() => {
+        cy.get(publisherSelectors.selectArrow).click({force:true})
+    })
+    cy.wait(2000)
+    cy.get(publisherSelectors.selectDropdown).within(() => {
+        cy.contains(publication).click({force:true})
+    })
+    cy.get(publisherSelectors.outputFormat).within(() => {
+        cy.get(publisherSelectors.selectArrow).click({force:true})
+    })
+    cy.wait(2000)
+    cy.get(publisherSelectors.selectDropdown).within(() => {
+        cy.contains('INDD').click({force:true})
+    })
+
+    cy.log("Setup INDD Packaging");
+
+    cy.wait(2000)
+    cy.get(akeneoPIMSelectors.includeUpdateInfo).check({force : true});
+    cy.wait(100)
+    cy.get(akeneoPIMSelectors.includeUpdateBiInfo).check({force : true});
+    cy.wait(100)
+    cy.get(akeneoPIMSelectors.includeUpdateVariable).check({force : true});
+    cy.wait(100)
+    cy.get(akeneoPIMSelectors.createIndesignPackage).check({force : true});
+    cy.wait(2000)
+
+    cy.get(publisherSelectors.generateBtn).click({force:true})
+    cy.wait(10000)
+
+    cy.get('#jobListTable').within(() => {
+        cy.get('tbody').find('tr').as('generated').then((generated) => {
+            cy.get('@generated').eq(generated.length-2).find(publisherSelectors.downloadProgressBar,
+                { timeout: 25000000, interval: 600 }).should('have.attr','aria-valuenow','100')
+        })
+    })
+    cy.get(publisherSelectors.downloadProgressBar, { timeout: 250000000, interval: 600 }).should('have.attr','aria-valuenow','100')
+})
 
 
 

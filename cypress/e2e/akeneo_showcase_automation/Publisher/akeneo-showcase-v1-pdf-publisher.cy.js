@@ -6,7 +6,7 @@ import elementSelectionSelectors from '../../../../selectors/element-selection-s
 describe('akeneo v1 showcase login open publication', () => {
 
     beforeEach(() => {
-        cy.loginWithoutCaching(userData.userName,userData.userPassword,'Publisher',userData.login_url);
+        cy.login(userData.userName,userData.userPassword,'Publisher',userData.login_url);
         cy.pageLoaded();
     })
    
@@ -28,6 +28,7 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
         cy.verifyDownload('.zip', { contains: true });
         cy.get('#deleteAll').click({force:true})
+        cy.wait(2000)
         cy.get('#noJobsMessage').should('exist')
         cy.clearAllCookies()
         cy.clearAllSessionStorage()

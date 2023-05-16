@@ -95,7 +95,7 @@ describe('akeneo v3 showcase test cases', () => {
     publications_dups.forEach((publications_dup) => {
     
         let newPub = `${publications_dup}_dup`
-        it.skip(`check if publication are getting opened correctly - ${publications_dup}`, () => {
+        it.skip(`check if publication are getting duplicated  correctly - ${publications_dup}`, () => {
             cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
             cy.duplicatePublication(projectData.akeneo.projectV1,publications_dup,newPub);
             cy.wait(5000);
@@ -233,7 +233,7 @@ describe('akeneo v3 showcase test cases', () => {
 
     it.skip('convert to indd marketing', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
+        cy.selectPublication(projectData.akeneo.projectV3,publication);
         cy.wait(5000)
         cy.get('#PGS\\.1_0_page').as('page').within(() => {
             cy.contains(' album ').click();
@@ -426,7 +426,7 @@ describe('akeneo v3 showcase test cases', () => {
             cy.contains('A').click();
         })
         cy.get(generateSelectors.previewPublication).as('previewButton').click({force:true})
-        cy.get('@previewButton',{timeout:15000000}).should('have.css', 'background')
+        cy.get('@previewButton',{timeout:180000}).should('have.css', 'background')
             .and('include', 'rgb(255, 64, 129)')
         cy.get('.pageNum').as('elem').then((elem) => {
                 cy.get('@elem')

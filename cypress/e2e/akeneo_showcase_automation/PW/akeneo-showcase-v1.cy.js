@@ -8,7 +8,7 @@ import generateSelectors from '../../../../selectors/generate-selectors.json'
 
 describe('akeneo v1 showcase login open publication', () => {
 
-    let publication = ' Brochure Clothing Summer 2021 '
+    let publication = ' Catalog_2023 '
     function retriveTableValue(){
         let list = []
         cy.get('table').find('tr').as('elements').then((row) => {
@@ -68,10 +68,10 @@ describe('akeneo v1 showcase login open publication', () => {
     let publications =  [' Brochure Clothing Summer 2021 ',' Catalog 2022 ',
     ' Catalog_2023 ',' Flyer Groceries 2022 ',' Flyer Outdoor 2022 ', 
     ' Flyer Outdoor 2023 ',' Fresh Food ',' Groceries ',' Groceries 2023 ',
-    ' Jeans and Leggings ',' Packaged Food ',' Shirts and Hoodies ']
+    ' Jeans and Leggings ',' Packaged Food ',' Shirts and Hoodies ',' SKI ']
 
     publications.forEach((publication) => {
-        it.skip(`check if publication are getting opened correctly - ${publication}`, () => {
+        it(`check if publication are getting opened correctly - ${publication}`, () => {
             cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
             cy.selectPublication(projectData.akeneo.projectV1,publication);
             cy.wait(5000);
@@ -81,7 +81,7 @@ describe('akeneo v1 showcase login open publication', () => {
     let master_publications = [' Clothing ',' Groceries ',' Outdoor ',' Publication ']
     master_publications.forEach((masterPublication) => {
         let newPub = `${masterPublication}_new`
-        it.skip(`check if new publication are getting created - ${masterPublication}`, () => {
+        it(`check if new publication are getting created - ${masterPublication}`, () => {
             cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
             cy.createNewPublication(projectData.akeneo.projectV1,masterPublication,newPub)
         })
@@ -95,15 +95,15 @@ describe('akeneo v1 showcase login open publication', () => {
     publications_dups.forEach((publications_dup) => {
     
         let newPub = `${publications_dup}_dup`
-        it.skip(`check if publication are getting opened correctly - ${publications_dup}`, () => {
+        it(`check if publication are getting duplicated correctly - ${publications_dup}`, () => {
             cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
             cy.duplicatePublication(projectData.akeneo.projectV1,publications_dup,newPub);
             cy.wait(5000);
         })       
     })
 
-    it('Add elements to basket', () => {
-        let stacElem = ["Clothing","Eternal","Juck & Joni"]
+    it.only('Add elements to basket', () => {
+        let stacElem = ["Eternal","Samy","Outdoor overview","Hurricane Hedwig"]
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.get(elementSelectionSelectors.sideToolBar).within(() => {
@@ -111,12 +111,16 @@ describe('akeneo v1 showcase login open publication', () => {
         })
         cy.wait(5000)
         cy.get('table')
-        .find('tr').eq(1).find('td').eq(1).click();
-        cy.get('table').find('tr').eq(3).click({
+        .find('tr').eq(3).find('td').eq(0).click();
+        cy.get('table').find('tr').eq(6).click({
             ctrlKey:true,
             force:true,
         })  
-        cy.get('table').find('tr').eq(5).click({
+        cy.get('table').find('tr').eq(11).click({
+            ctrlKey:true,
+            force:true,
+        }) 
+        cy.get('table').find('tr').eq(12).click({
             ctrlKey:true,
             force:true,
         }) 
@@ -400,7 +404,7 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.saveProject();
     })
 
-    it.only('generate pdf pulications',() => {
+    it('generate pdf pulications',() => {
         let renameFileName = 'akeneo-v1-hq-pdf.pdf'
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
@@ -409,7 +413,7 @@ describe('akeneo v1 showcase login open publication', () => {
             cy.contains('A').click();
         })
         cy.get(generateSelectors.previewPublication).as('previewButton').click({force:true})
-        cy.get('@previewButton',{timeout:15000000}).should('have.css', 'background')
+        cy.get('@previewButton',{timeout:180000}).should('have.css', 'background')
             .and('include', 'rgb(255, 64, 129)')
         cy.get('.pageNum').as('elem').then((elem) => {
                 cy.get('@elem')
@@ -425,13 +429,9 @@ describe('akeneo v1 showcase login open publication', () => {
                 })
         })
         cy.get("[aria-label='Output Formats']").click();
-        cy.get('.cdk-overlay-pane').within(() => {
-            cy.contains(' HQ-PDF ').click();
-        })
+        cy.contains(' HQ-PDF ').click();
         cy.get("[placeholder='PDF Quality Settings']").click();
-        cy.get('.cdk-overlay-pane').within(() => {
-            cy.contains(' PDFX3 2002 ').click();
-        })
+        cy.contains(' PDFX3 2002 ').click();
         cy.get("[aria-label='Log Languages']").click();
         cy.contains(' en_GB ').click();
         cy.get("button[type='submit']").click();

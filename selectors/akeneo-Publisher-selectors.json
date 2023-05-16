@@ -6,5 +6,9 @@
     "publicationList":"#s2id_publicationList",
     "outputFormat":"#s2id_outputFormatList",
     "generateBtn":"#btnGenerate",
-    "downloadProgressBar":".progress-bar"
+    "downloadProgressBar":".progress-bar",
+    "includeUpdateInfo":"#updateInfoCheckbox",
+    "includeUpdateBiInfo":"#updateInfoBidirectionalCheckbox",
+    "includeUpdateVariable":"#updateInfoVariableCheckbox",
+    "createIndesignPackage":"#packageInddCheckbox"
 }
