@@ -12,5 +12,8 @@
     "productNewDesc":"Demo",
     "productNewPrice":"50",
     "oldProductDesc":"This cropped t-shirt made of cotton jersey fabric with a shortened fit, convinces with its loose flair. The short-sleeved design is rounded off by the pretty print.",
-    "oldProductPrice":"64.99"
+    "oldProductPrice":"64.99",
+    "publisherUserName":"Mary",
+    "publisherUserPassword":"Mary"
+
 }
