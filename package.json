@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.3",
+    "@playwright/test": "^1.33.0",
     "cy-verify-downloads": "^0.1.8",
     "cypress": "^12.6.0",
     "cypress-file-upload": "^5.0.8",

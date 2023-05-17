@@ -1,7 +1,17 @@
 const { defineConfig } = require("cypress");
 const puppeteer = require('puppeteer');
 const { isFileExist, findFiles } = require('cy-verify-downloads');
-const {downloadFile} = require('cypress-downloadfile/lib/addPlugin')
+const {downloadFile} = require('cypress-downloadfile/lib/addPlugin');
+
+const myTask = {
+  async openplaywright() {
+    const browser = await chromium.launch();
+    const plannercontext = await browser.newContext();
+    const plannerPage = await plannercontext.newPage();
+
+    await plannerPage.goto('http://192.168.0.143:8080/InBetween/');
+  },
+}
 
 module.exports = defineConfig({
 

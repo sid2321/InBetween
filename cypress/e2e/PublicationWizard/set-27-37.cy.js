@@ -26,7 +26,7 @@ describe('set 27-37 test cases', () => {
       })  
       cy.get('@5_columns').dragTo(elementBuilderSelectors.playAreaDrop) 
       cy.wait(1000);
-      cy.get('#basket_table > .mat-card-content > #BasketTable > app-table > .table > .divWidth > #Basket > #stackelm > :nth-child(1  )').then(el => {
+      cy.get('#basket_table > .mat-card-content > #BasketTable > app-table > .table > .divWidth > #Basket > #stackelm > :nth-child(1)').then(el => {
         const draggable = el[0]  // Pick up this
         draggable.dispatchEvent(new MouseEvent('mousemove'));
         cy.wait(900)

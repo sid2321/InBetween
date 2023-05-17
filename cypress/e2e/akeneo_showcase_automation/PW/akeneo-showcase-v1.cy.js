@@ -55,7 +55,7 @@ describe('akeneo v1 showcase login open publication', () => {
     }
 
     beforeEach(() => {
-        cy.loginWithoutCaching(userData.userName,userData.userPassword,'Publication Wizard',userData.login_url);
+        cy.loginWithoutCaching('Simon',userData.userPassword,'Publication Wizard',userData.login_url);
         cy.pageLoaded();
     })
 
@@ -180,10 +180,10 @@ describe('akeneo v1 showcase login open publication', () => {
     })
 
     it('Drag drop page to builder tab', () => {
-        let list = []
-        let list_actual = ['Clothing','Samy','Sivel']
+        //let list = []
+        //et list_actual = ['Clothing','Samy','Sivel']
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,' Brochure Clothing Summer 2021 ');
+        cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(5000)
         cy.dragDropMasterPage(0,'cover_chapter','1')
         cy.wait(2000)

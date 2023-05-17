@@ -26,6 +26,20 @@ describe('check test cases from 22-28', () => {
         return date;
     }
 
+    function tomorrowsDate () {
+
+        const tomorrow  = new Date(); // The Date object returns today's timestamp
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const config = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        };
+        let date = tomorrow.toLocaleString('en-IN', config);
+        console.log(date)
+        return date;
+    }
+
     it('check publication preview', () => {
 
         cy.visit(`${userData.login_url}/#/PublicationPlanner/Home`)
@@ -44,7 +58,7 @@ describe('check test cases from 22-28', () => {
 
     })
 
-    it.only('create section', () => {
+    it('create section', () => {
 
         let date = todaysDate();
         cy.visit(`${userData.login_url}/#/PublicationPlanner/Home`)
@@ -100,6 +114,35 @@ describe('check test cases from 22-28', () => {
         cy.get('#editDisabled_dynamisch_section1').find('#savesection_dynamisch_section1').click({force:true})
         cy.wait(2000)
         cy.get('@workflow').should('have.text',' Media Design ')
+     })
+
+     it.only('change date to current day and verify the colour' ,() => {
+        let date = todaysDate();
+        let tmdate = tomorrowsDate();
+        cy.visit(`${userData.login_url}/#/PublicationPlanner/Home`)
+        cy.wait(2000)
+        cy.get(plannerSelector.projSelPlanner).find('span').click({force:true})
+        cy.wait(2000)
+        cy.get(plannerSelector.projecSelPlannerpanel).within(() =>{
+            cy.contains(' IB_Simple_Project_V2 ').click({force:true})
+        })
+        cy.get('#editEnabled_dynamisch').click({force:true})
+        cy.get('#pubDueDate').within(() =>{
+            cy.get('svg').click({force:true})
+        })
+        cy.get(`[aria-label="${date}"]`).click()
+        cy.get('#editDisabled_dynamisch').find('img').eq(0).click({force:true})
+        cy.get('#dueDateSpan_dynamisch').find('span').should('have.css','color')
+        .and('include', 'rgb(255, 0, 0)')
+        cy.wait(1000)
+        cy.get('#editEnabled_dynamisch').click({force:true})
+        cy.get('#pubDueDate').within(() =>{
+            cy.get('svg').click({force:true})
+        })
+        cy.get(`[aria-label="${tmdate}"]`).click()
+        cy.get('#editDisabled_dynamisch').find('img').eq(0).click({force:true})
+        cy.get('#dueDateSpan_dynamisch').find('span').should('have.css','color')
+        .and('include', 'rgb(85, 85, 85)')
      })
 
 })

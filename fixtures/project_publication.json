@@ -36,7 +36,8 @@
         "projectSiemens":" BSH_Pricelist_Siemens_GroupBySortTest ",
         "pubSiemens":" GroupBySortTest ",
         "projectBosch":" BSH_Pricelist_Bosch ",
-        "pubBosch":" Test_2021-07-08_GR-run "
+        "pubBosch":" Test_2021-07-08_GR-run ",
+        "projectSiemensPlanner":" BSH_Pricelist_Siemens "
     },
     "akeneo":{
         "projectV1":" IB_Default_Showcase_V1 ",

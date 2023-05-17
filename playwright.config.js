@@ -36,7 +36,19 @@ module.exports = defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     //baseURL: 'http://127.0.0.1:3000',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+       // Name of the browser that runs tests. For example `chromium`, `firefox`, `webkit`.
+       browserName: 'chromium',
+
+       // Toggles bypassing Content-Security-Policy.
+       bypassCSP: true,
+   
+       // Channel to use, for example "chrome", "chrome-beta", "msedge", "msedge-beta".
+       channel: 'chrome',
+   
+       // Run browser in headless mode.
+       headless: false,
+
+      trace: 'on-first-retry',
   },
   
   /* Configure projects for major browsers */

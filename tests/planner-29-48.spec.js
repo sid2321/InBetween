@@ -9,7 +9,7 @@ const { chromium, test, expect } = require('@playwright/test');
         const pwPage = await pwcontext.newPage();
         const plannerPage = await plannercontext.newPage();
 
-        await pwPage.goto('http://localhost:8080/InBetween/');
+        await pwPage.goto('http://192.168.0.143:8080/InBetween/');
         await pwPage.getByPlaceholder('User ID').fill('manager');
         await pwPage.getByPlaceholder('Password').fill('manager');
         await pwPage.click("[id='login-btn']",{timeout: 12000});
@@ -17,7 +17,7 @@ const { chromium, test, expect } = require('@playwright/test');
         await Promise.all([
             expect(pwPage.url()).toContain('/PublicationWizard/home')
         ]);
-        await plannerPage.goto('http://localhost:8080/InBetween/');
+        await plannerPage.goto('http://192.168.0.143:8080/InBetween/');
         await plannerPage.waitForLoadState("networkidle");
         await plannerPage.getByPlaceholder('User ID').fill('manager');
         await plannerPage.getByPlaceholder('Password').fill('manager');
@@ -28,7 +28,7 @@ const { chromium, test, expect } = require('@playwright/test');
         await Promise.all([
             expect(plannerPage.url()).toContain('/PublicationWizard/home')
         ]);
-        await plannerPage.goto('http://localhost:8080/InBetween/#/PublicationPlanner/Home');
+        await plannerPage.goto('http://192.168.0.143:8080/InBetween/#/PublicationPlanner/Home');
         await plannerPage.waitForLoadState("networkidle");
         await Promise.all([
             expect(plannerPage.url()).toContain('PublicationPlanner/Home')
@@ -56,7 +56,7 @@ const { chromium, test, expect } = require('@playwright/test');
                 throw new Error("No Element")
             }
         }
-        await expect(pwPage.locator('#PGS\\.0_0_FAR\\.1')). toBeInViewport();
+        await expect(pwPage.locator('#PGS\\.0_0_FAR\\.1')).toBeInViewport();
         await plannerPage.bringToFront();
         await plannerPage.getByRole('listbox', { name: 'Project' }).locator('span').click();
         await plannerPage.getByText('BSH_Pricelist_Siemens').click();
@@ -79,10 +79,10 @@ const { chromium, test, expect } = require('@playwright/test');
         await plannerPage.waitForTimeout(5000)
         await plannerPage.locator('#editDisabled_lena1').getByRole('img').first().click();
         await plannerPage.waitForTimeout(2000)
-        await pwPage.bringToFront();
-       /* await pwPage.locator('.glyphicon-download-alt').click();  //await expect(pwPage.getByRole('simple-snack-bar').getByText('A new version of the publication is available now.')).toBeVisible()
+        await pwPage.bringToFront();    
+        await pwPage.locator('.glyphicon-download-alt').click();  //await expect(pwPage.getByRole('simple-snack-bar').getByText('A new version of the publication is available now.')).toBeVisible()
         await expect(pwPage.locator('.glyphicon-download-alt')).toBeHidden();
-        /*await pwPage.getByText('swap_horiz').click()
+        await pwPage.getByText('swap_horiz').click()
         await pwPage.getByText('swap_horiz').click()
         await expect(pwPage.locator('.staticPageImport')).toBeVisible();
         const sourcePlaceHolder = pwPage.locator('.staticPageImport').first();
@@ -99,6 +99,13 @@ const { chromium, test, expect } = require('@playwright/test');
                 throw new Error("No Element")
             }
         }
+        await pwPage.locator('#save').click();
+        await expect(plannerPage.getByText('Saved')).toBeVisible();
+        await pwPage.waitForTimeout(2000)
+        await expect(pwPage.locator('#PGS\\.1_1_page')).toBeInViewport();
+        await pwcontext.close();
+        await plannercontext.close();
+        await browser.close();
         /*const currentLink = pwPage.locator('#basket_table > .mat-card-content > #StackTable > app-table > .table > .divWidth > #Stack > #stackelm > :nth-child(2)');
         const targetPage =pwPage.locator('#PGS\\.0_0_FAR\\.1');
         if (currentLink && targetPage) {
@@ -118,10 +125,10 @@ const { chromium, test, expect } = require('@playwright/test');
         /*await source.dragTo(target, {
             sourcePosition: { x: 34, y: 7 },
             targetPosition: { x: 10, y: 20 },
-          });*/
+          });
         await new Promise((resolve) => {
-            pwPage.on('close', resolve); // <-- add this
-        });
+            pwcontext.on('close', resolve); // <-- add this
+        });*/
 
     })
 
