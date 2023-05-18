@@ -44,10 +44,15 @@ it('Login to Akeneo PIM & Make changes', () => {
 
         it(`IB Publisher generate showcase v1`,() => {
             let renameFileName
-           cy.loginWithoutCaching(userData.userName,userData.userPassword,'Publisher',userData.login_url);
+           //cy.loginWithoutCaching(userData.userName,userData.userPassword,'Publisher',userData.login_url);
+           cy.loginWithoutCaching(userData.publisherUserName,userData.publisherUserPassword,'Publisher',userData.login_url);
             cy.pageLoaded();
              cy.visit(`${userData.publisherLogin_URL}/`)
             cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
+            cy.wait(5000)
+            cy.get(akeneoPIMSelectors.dataRefresh).click();
+            cy.wait(5000)
+            cy.get(akeneoPIMSelectors.clearcache).click();
             cy.wait(5000)
             cy.GenerateUsingPublisher('IB_Default_Showcase_V1','Jeans and Leggings','PDF')
             cy.disablePopUp();

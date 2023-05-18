@@ -10,6 +10,8 @@
     "productPrice":".AknTextField AknTextField--noRightRadius",
     "productSave":".AknButton AknButton--apply save",
     "pimLogout":"AknDropdown-menuLink logout",
-    "pimTitle":".AknDropdown-menuLink logout"
+    "pimTitle":".AknDropdown-menuLink logout",
+    "dataRefresh":"#DataRefresh",
+    "clearcache":"#clearCache"
 
 }
