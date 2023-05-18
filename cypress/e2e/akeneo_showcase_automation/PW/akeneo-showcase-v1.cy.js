@@ -242,13 +242,6 @@ describe('akeneo v1 showcase login open publication', () => {
             })
         })
         cy.saveProject();
-
-    })
-
-    it('preview pages in builder tab', () => {
-        cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,publication);
-        cy.wait(5000)
         cy.get('#PGS\\.2_0_page').find('.pageTitleOverlay').click({force:true});
         cy.wait(2000);
         cy.get(elementBuilderManager.previewPage).eq(4).click({force:true})
@@ -261,10 +254,10 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.get('[alt="No Products To Preview"]',{ timeout: 200000 }).should('have.length.greaterThan',10)
     })
 
-    it.only('convert to indd and availaible for finishing', () => {
+    it('convert to indd and availaible for finishing', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
-        cy.wait(5000)
+        cy.wait(2000)
         cy.get('#PGS\\.14_3_FAR\\.1').scrollIntoView().should('be.visible')
         cy.get('#PGS\\.14_3_page').as('page').within(() => {
             cy.contains(' album ').click();
@@ -289,6 +282,12 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.get(elementBuilderManager.conIndesign).parents('button').click();
         cy.get('[alt="Loading..."]', { timeout: 50000}).should('not.exist')
         cy.saveProject();
+
+    })
+
+    it.only('annotations manager', () => {
+        cy.drawusingAnnotationsMnanager();
+
     })
 
     it.skip('convert workflow stage marketing finishing', () => {

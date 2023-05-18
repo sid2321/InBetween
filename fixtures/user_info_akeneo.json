@@ -3,7 +3,7 @@
     "userPassword":"manager",
     "pwUserName":"Simon",
     "pwPassword":"Simon",
-    "login_url":"http://localhost:8080/InBetween",
+    "login_url":"http://192.168.158.212:8080/InBetween",
     "publisherLogin_URL":"http://localhost:8080/IBPublisher",
     "akeneo_PIM_Url":"http://192.168.157.29/user/login",
     "akeneo_PIM_Username":"admin",

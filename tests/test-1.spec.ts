@@ -1,20 +1,45 @@
-import { test, expect } from '@playwright/test';
+import {chromium, test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
-  await page.goto('http://localhost:8080/InBetween/#/PublicationPlanner/Table');
-  await page.goto('http://localhost:8080/InBetween/#/');
-  await page.goto('http://localhost:8080/InBetween/#/Login?returnUrl=%2FPublicationPlanner%2FTable');
-  await page.goto('http://localhost:8080/IBSSO/?clientId=hwy60kjcr91qs45mab23pfvlxudot8&redirectUrl=http://localhost:8080/InBetween&appType=pw&location=PublicationPlanner');
-  await page.getByPlaceholder('User ID').click();
-  await page.getByPlaceholder('User ID').click();
+test('test', async () => {
+  const browser = await chromium.launch();
+  const plannercontext = await browser.newContext();
+  const page = await plannercontext.newPage();
+
+  await page.goto('http://192.168.158.212:8080/InBetween/');
+  await page.waitForLoadState("networkidle");
   await page.getByPlaceholder('User ID').fill('manager');
-  await page.getByPlaceholder('Password').click();
   await page.getByPlaceholder('Password').fill('manager');
-  await page.locator('#selectDropdown').getByRole('textbox').click();
-  await page.locator('#select-options-797887dd-c7f9-65d0-3a56-f912275537894').getByText('Publication Planner').click();
-  await page.getByText('Login', { exact: true }).click();
-  await page.getByText('expand_moreProject').click();
-  await page.getByText('BSH_Pricelist_Siemens').click();
-  await page.locator('#editEnabled_lena1 svg').first().click();
-  await page.getByRole('row', { name: 'preview 0 DD.MM.YYYY Open calendar iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAM5JREFUeF7t2LENgDAQQ1GyGxMwCSUjUDIM07BMmIA01kmRePQXJEN8/m7LdvclePp5DafbsQen1482AvgDXAEekFgNE7QFrEE5YKSAICQJisLJli2fxQJgCAyBITCUWC0YAkNgCAyBoYECaBANosEkZpTPosH+rFEULv9ExS9oBPAHuAI8oNhnpj6eCf5+C2iFtcJa4WgNKkWVokpRpahSVCn6rYBWWCusFZ4bh8EQGAJDYChxKTSIBtEgGkSDaBANfioAh+EwHE6CZvnsCx7uMkjfxh2+AAAAAElFTkSuQmCC In Planning 0% Marketing Media Design Assignee' }).getByRole('img').nth(2).click();
+  await page.click("[id='login-btn']",{timeout: 12000});
+  await page.waitForLoadState("networkidle");
+  const openPubButton = page.locator('#open_pub_button');
+  await openPubButton.waitFor();
+  await Promise.all([
+      expect(page.url()).toContain('/PublicationWizard/home')
+  ]);
+  await page.locator("#sel_proj").click();
+  await page.getByRole('option', { name: 'IB_Default_Showcase_V1' }).getByText('IB_Default_Showcase_V1').click();
+  await page.locator("#sel_pub").click();
+  await page.getByRole('option', { name: 'Catalog_2023' }).getByText('Catalog_2023').click();
+  await page.locator("#open_pub_button").click()
+  //await expect(page.locator('mat-chip').filter({ has: page.getByText('Catalog_2023') })).toBeVisible();
+  await page.locator('[id="PGS\\.14_3_page"] > .pageTtileContainer > .pageTitleOverlay').click();
+  await page.locator('a').filter({ hasText: /^C$/ }).click();
+  await page.waitForTimeout(3000)
+  await page.getByAltText('rectangle').click();
+  await page.waitForTimeout(15000)
+  const sourcePlaceHolder = page.locator('svg').first();
+  if (sourcePlaceHolder) {
+      const srcBoundPlace = await sourcePlaceHolder.boundingBox()
+      if (srcBoundPlace) {
+          await page.mouse.move(srcBoundPlace.x + srcBoundPlace.width / 2, srcBoundPlace.y + 10)
+          await page.mouse.down();
+          await page.mouse.move(srcBoundPlace.x + (srcBoundPlace.width / 2 + 30), srcBoundPlace.y + 40 );
+          await page.mouse.up();
+      } else {
+          throw new Error("No Element")
+      }
+  }
+  await new Promise((resolve) => {
+    page.on('close', resolve); // <-- add this
+  });
 });

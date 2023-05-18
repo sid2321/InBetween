@@ -210,5 +210,9 @@ Cypress.Commands.add('toolTipValidate', (selector) => {
 Cypress.Commands.add('logintoplannerinDifferentbrowser',() => {
     cy.task('loginPlanner')
 })
+
+Cypress.Commands.add('drawusingAnnotationsMnanager', () =>{
+    cy.task('drawusingAnnotationsMnanager')
+})
 const compareSnapshotCommand = require('cypress-image-diff-js/dist/command')
 compareSnapshotCommand()
