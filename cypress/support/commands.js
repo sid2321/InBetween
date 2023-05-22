@@ -214,5 +214,9 @@ Cypress.Commands.add('logintoplannerinDifferentbrowser',() => {
 Cypress.Commands.add('drawusingAnnotationsMnanager', () =>{
     cy.task('drawusingAnnotationsMnanager')
 })
+
+Cypress.Commands.add('makechangesToPIM', () => {
+    cy.task('makechangesToPIM')
+})
 const compareSnapshotCommand = require('cypress-image-diff-js/dist/command')
 compareSnapshotCommand()

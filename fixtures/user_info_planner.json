@@ -1,5 +1,5 @@
 {
     "userName":"manager",
     "userPassword":"manager",
-    "login_url":"http://192.168.0.143:8080/InBetween"
+    "login_url":"http://localhost:8080/InBetween"
 }

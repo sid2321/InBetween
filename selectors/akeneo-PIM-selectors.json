@@ -12,6 +12,7 @@
     "pimLogout":"AknDropdown-menuLink logout",
     "pimTitle":".AknDropdown-menuLink logout",
     "dataRefresh":"#DataRefresh",
-    "clearcache":"#clearCache"
+    "clearCache":"#clearCache",
+    "okBtn":".btn btn-custom center-block ibbutton"
 
 }

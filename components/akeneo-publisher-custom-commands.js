@@ -117,13 +117,13 @@ Cypress.Commands.add('GenerateINDDPackagingPublisher', (project,publication) => 
     cy.log("Setup INDD Packaging");
 
     cy.wait(2000)
-    cy.get(akeneoPIMSelectors.includeUpdateInfo).check({force : true});
+    cy.get(publisherSelectors.includeUpdateInfo).eq(0).check({force : true});
     cy.wait(100)
-    cy.get(akeneoPIMSelectors.includeUpdateBiInfo).check({force : true});
+    cy.get(publisherSelectors.includeUpdateBiInfo).check({force : true});
     cy.wait(100)
-    cy.get(akeneoPIMSelectors.includeUpdateVariable).check({force : true});
+    cy.get(publisherSelectors.includeUpdateVariable).check({force : true});
     cy.wait(100)
-    cy.get(akeneoPIMSelectors.createIndesignPackage).check({force : true});
+    cy.get(publisherSelectors.createIndesignPackage).check({force : true});
     cy.wait(2000)
 
     cy.get(publisherSelectors.generateBtn).click({force:true})

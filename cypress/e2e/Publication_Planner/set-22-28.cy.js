@@ -116,7 +116,7 @@ describe('check test cases from 22-28', () => {
         cy.get('@workflow').should('have.text',' Media Design ')
      })
 
-     it.only('change date to current day and verify the colour' ,() => {
+     it('change date to current day and verify the colour' ,() => {
         let date = todaysDate();
         let tmdate = tomorrowsDate();
         cy.visit(`${userData.login_url}/#/PublicationPlanner/Home`)

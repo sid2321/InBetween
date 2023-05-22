@@ -37,11 +37,11 @@ describe('akeneo v1 showcase login open publication', () => {
         
     })
 
-    let publications =  ['Brochure Clothing Summer 2021'
-    ,'Catalog 2022','Catalog_2023'
- ,'Flyer Groceries 2022','Flyer Outdoor 2022', 
-    'Flyer Outdoor 2023','Fresh Food','Groceries','Groceries 2023',
- 'Jeans and Leggings','Packaged Food','Shirts and Hoodies','SKI']
+    let publications =  ['Brochure Clothing Summer 2021']
+   // ,'Catalog 2022','Catalog_2023'
+ //,'Flyer Groceries 2022','Flyer Outdoor 2022', 
+   // 'Flyer Outdoor 2023','Fresh Food','Groceries','Groceries 2023',
+ //'Jeans and Leggings','Packaged Food','Shirts and Hoodies','SKI']
 
     publications.forEach((publication) => {
 

@@ -25,13 +25,45 @@ module.exports = (on, config) => {
 
 
   on('task', {
-    drawusingAnnotationsMnanager(){
+    makechangesToPIM(){
       return (async() => {
-        const browser = await chromium.launch({ headless: false });
+        const browser = await chromium.launch({headless:false});
         const plannercontext = await browser.newContext();
         const page = await plannercontext.newPage();
-  
-        await page.goto('http://192.168.158.212:8080/InBetween/');
+
+        await page.goto('http://192.168.157.29/user/login');
+        await page.getByLabel('Username or Email').click();
+        await page.getByLabel('Username or Email').fill('admin');
+        await page.getByLabel('Username or Email').press('Tab');
+        await page.getByLabel('Password').fill('admin');
+        await page.getByRole('button', { name: 'Login' }).click();
+        await page.getByRole('menuitem', { name: 'Products' }).click();
+        await page.getByPlaceholder('Search by label or identifier').click();
+        await page.getByPlaceholder('Search by label or identifier').fill('C1S2P2');
+        await page.getByRole('cell', { name: 'C1S2P2' }).click();
+        await page.locator('[data-attribute="ib_description"]').locator('textarea').click()
+        await page.locator('[data-attribute="ib_description"]').locator('textarea').clear()
+        await page.locator('[data-attribute="ib_description"]').locator('textarea').fill('This cropped t-shirt made of cotton jersey fabric with a shortened fit, convinces with its loose flair. The short-sleeved design is rounded off by the pretty print. test test');
+        await page.getByLabel('Description').fill('This cropped t-shirt made of cotton jersey fabric with a shortened fit, convinces with its loose flair. The short-sleeved design is rounded off by the pretty print. test test');
+        await page.locator('div:nth-child(3) > .AknTextField').fill('70');
+        await page.getByRole('button', { name: 'Save' }).click();
+        await page.getByTitle('Super Admin').click();
+        await page.getByText('Logout').click();
+        await browser.close();
+        return null;
+      })();
+    },
+  })
+
+
+  on('task', {
+    drawusingAnnotationsMnanager(){
+      return (async() => {
+        const browser = await chromium.launch();
+        const plannercontext = await browser.newContext();
+        const page = await plannercontext.newPage();
+      
+        await page.goto('http://localhost:8080/InBetween/');
         await page.waitForLoadState("networkidle");
         await page.getByPlaceholder('User ID').fill('manager');
         await page.getByPlaceholder('Password').fill('manager');
@@ -47,12 +79,14 @@ module.exports = (on, config) => {
         await page.locator("#sel_pub").click();
         await page.getByRole('option', { name: 'Catalog_2023' }).getByText('Catalog_2023').click();
         await page.locator("#open_pub_button").click()
-        //await expect(page.locator('mat-chip').filter({ has: page.getByText('Catalog_2023') })).toBeVisible();
+        await expect(page.locator('mat-chip').filter({ has: page.getByText('Catalog_2023') })).toBeVisible();
         await page.locator('[id="PGS\\.14_3_page"] > .pageTtileContainer > .pageTitleOverlay').click();
+      
         await page.locator('a').filter({ hasText: /^C$/ }).click();
         await page.waitForTimeout(3000)
+        await expect(page.getByAltText('Loading...')).toBeHidden({ timeout: 15000});
         await page.getByAltText('rectangle').click();
-        await page.waitForTimeout(15000)
+        await page.waitForTimeout(5000)
         const sourcePlaceHolder = page.locator('svg').first();
         if (sourcePlaceHolder) {
             const srcBoundPlace = await sourcePlaceHolder.boundingBox()
@@ -65,9 +99,24 @@ module.exports = (on, config) => {
                 throw new Error("No Element")
             }
         }
-        await new Promise((resolve) => {
-          page.on('close', resolve); // <-- add this
-        });
+        await page.locator('#status_div_0').locator('#textarea').type('Increase Image Size')
+        await page.keyboard.press('Enter');
+        await page.getByAltText('Sticky Note').click();
+        if (sourcePlaceHolder) {  
+          const srcBoundPlaceSticky = await sourcePlaceHolder.boundingBox()
+          if (srcBoundPlaceSticky) {
+              await page.mouse.move(srcBoundPlaceSticky.x + 100, srcBoundPlaceSticky.y + 10), 
+              await page.mouse.down();
+              await page.mouse.up();
+          } else {
+              throw new Error("No Element")
+          }
+        }
+        await page.locator('#status_div_1').locator('#textarea').type('Page 1')
+        await page.keyboard.press('Enter');
+        await page.locator('app-annotation-manager').getByRole('button', { name: 'H' }).click();
+        await expect(page.getByText('Saved')).toBeVisible();
+        await browser.close();
         return null;
       })();
     },

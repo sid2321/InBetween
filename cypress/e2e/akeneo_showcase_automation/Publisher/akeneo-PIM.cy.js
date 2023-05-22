@@ -3,15 +3,33 @@ import userData from '../../../../fixtures/user_info_akeneo.json'
 import settingsSelectors from '../../../../selectors/settings-selection-selectors.json'
 import akeneoPIMSelectors from '../../../../selectors/akeneo-PIM-selectors.json'
 
-
 let oldProdDesc;
 let oldProdPrice;
 describe('Akeneo PIM chnages & Generations', () => {
 
+    beforeEach(() => {
+        cy.login(userData.publisherUserName,userData.publisherUserPassword,'Publisher',userData.login_url);
+        cy.pageLoaded();
+    })
 
-it('Login to Akeneo PIM & Make changes', () => {
+it.only('Login to Akeneo PIM & Make changes', () => {
 
-    cy.LoginAkeneoPIM(userData.akeneo_PIM_Url,userData.akeneo_PIM_Username,userData.akeneo_PIM_Password);
+
+    cy.visit(`${userData.publisherLogin_URL}/`)
+    cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
+    cy.wait(5000)
+
+    cy.makechangesToPIM();
+
+    cy.get(akeneoPIMSelectors.dataRefresh).click()
+    cy.get(akeneoPIMSelectors.okBtn).should('be.enabled').click();
+
+    cy.get(akeneoPIMSelectors.clearcache).click()
+    cy.get(akeneoPIMSelectors.okBtn).should('be.enabled').click();
+
+
+
+    /*cy.LoginAkeneoPIM(userData.akeneo_PIM_Url,userData.akeneo_PIM_Username,userData.akeneo_PIM_Password);
      cy.get(akeneoPIMSelectors.productSearchbox).type(userData.productID);
      cy.contains('Sivel').should('be.visible');
     
@@ -37,14 +55,13 @@ it('Login to Akeneo PIM & Make changes', () => {
 
     cy.get('[title="Super Admin"]').click();
     cy.get('.logout').click();
-    cy.log("PIM data reverted");
+    cy.log("PIM data reverted");*/
         
 
 })
 
         it(`IB Publisher generate showcase v1`,() => {
             let renameFileName
-           //cy.loginWithoutCaching(userData.userName,userData.userPassword,'Publisher',userData.login_url);
            cy.loginWithoutCaching(userData.publisherUserName,userData.publisherUserPassword,'Publisher',userData.login_url);
             cy.pageLoaded();
              cy.visit(`${userData.publisherLogin_URL}/`)

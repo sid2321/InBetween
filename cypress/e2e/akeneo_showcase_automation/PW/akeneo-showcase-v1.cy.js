@@ -55,7 +55,7 @@ describe('akeneo v1 showcase login open publication', () => {
     }
 
     beforeEach(() => {
-        cy.loginWithoutCaching(userData.userName,userData.userPassword,'Publication Wizard',userData.login_url);
+        cy.loginWithoutCaching('Simon','Simon','Publication Wizard',userData.login_url);
         cy.pageLoaded();
     })
 
@@ -311,7 +311,9 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(5000)
-        cy.get('#PGS\\.10_1_page').as('page').within(() => {
+        cy.get('#PGS\\.15_2_page').as('page')
+        
+        cy.get('@page').within(() => {
             cy.contains(' album ').click();
             cy.wait(2000);
         })  
