@@ -28,6 +28,7 @@ import loginScreenSelectors from '../../selectors/login-screen-selectors.json'
 import projSelection from '../../selectors/publication-screen-selectors.json'
 import elementBuilderSelectors from '../../selectors/element-builder-selectors.json'
 import pubScreenSelectors from '../../selectors/publication-screen-selectors.json'
+import userData from  '../../fixtures/user_info_akeneo.json'
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -212,8 +213,9 @@ Cypress.Commands.add('logintoplannerinDifferentbrowser',() => {
 })
 
 Cypress.Commands.add('drawusingAnnotationsMnanager', () =>{
-    cy.task('drawusingAnnotationsMnanager')
+    cy.task('drawusingAnnotationsMnanager',userData.login_url)
 })
+
 
 Cypress.Commands.add('makechangesToPIM', () => {
     cy.task('makechangesToPIM')

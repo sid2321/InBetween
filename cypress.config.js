@@ -3,16 +3,6 @@ const puppeteer = require('puppeteer');
 const { isFileExist, findFiles } = require('cy-verify-downloads');
 const {downloadFile} = require('cypress-downloadfile/lib/addPlugin');
 
-const myTask = {
-  async openplaywright() {
-    const browser = await chromium.launch();
-    const plannercontext = await browser.newContext();
-    const plannerPage = await plannercontext.newPage();
-
-    await plannerPage.goto('http://192.168.0.143:8080/InBetween/');
-  },
-}
-
 module.exports = defineConfig({
 
   video: true,
@@ -32,6 +22,7 @@ module.exports = defineConfig({
 
     //baseUrl: 'http://localhost:8080/InBetween',
     "defaultCommandTimeout":10000,
+    "taskTimeout":20000,
     "experimentalSessionAndOrigin":true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
