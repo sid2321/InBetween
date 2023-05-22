@@ -6,7 +6,6 @@ import elementSelectionSelectors from '../../../../selectors/element-selection-s
 describe('akeneo v2 showcase login open publication', () => {
 
     beforeEach(() => {
-        //cy.login(userData.userName,userData.userPassword,'Publisher',userData.login_url);
         cy.login(userData.publisherUserName,userData.publisherUserPassword,'Publisher',userData.login_url);
         cy.pageLoaded();
     })

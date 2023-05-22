@@ -6,7 +6,6 @@ import elementSelectionSelectors from '../../../../selectors/element-selection-s
 describe('akeneo wco showcase login open publication', () => {
 
     beforeEach(() => {
-        //cy.login(userData.userName,userData.userPassword,'Publisher',userData.login_url);
         cy.login(userData.publisherUserName,userData.publisherUserPassword,'Publisher',userData.login_url);
         cy.pageLoaded();
     })
@@ -47,7 +46,6 @@ describe('akeneo wco showcase login open publication', () => {
             cy.visit(`${userData.publisherLogin_URL}/`)
             cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
             cy.wait(5000)
-            //cy.GenerateUsingPublisher('WCO_Showcase',publication,'INDD')
             cy.GenerateUsingPublisher('WCO_Showcase',publication)
          }) 
 

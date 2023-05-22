@@ -1,3 +1,4 @@
+
 /// <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -30,7 +31,6 @@ module.exports = (on, config) => {
         const browser = await chromium.launch({headless:false});
         const plannercontext = await browser.newContext();
         const page = await plannercontext.newPage();
-
         await page.goto('http://192.168.157.29/user/login');
         await page.getByLabel('Username or Email').click();
         await page.getByLabel('Username or Email').fill('admin');
@@ -43,9 +43,8 @@ module.exports = (on, config) => {
         await page.getByRole('cell', { name: 'C1S2P2' }).click();
         await page.locator('[data-attribute="ib_description"]').locator('textarea').click()
         await page.locator('[data-attribute="ib_description"]').locator('textarea').clear()
-        await page.locator('[data-attribute="ib_description"]').locator('textarea').fill('This cropped t-shirt made of cotton jersey fabric with a shortened fit, convinces with its loose flair. The short-sleeved design is rounded off by the pretty print. test test');
-        await page.getByLabel('Description').fill('This cropped t-shirt made of cotton jersey fabric with a shortened fit, convinces with its loose flair. The short-sleeved design is rounded off by the pretty print. test test');
-        await page.locator('div:nth-child(3) > .AknTextField').fill('70');
+        await page.locator('[data-attribute="ib_description"]').locator('textarea').fill('test');
+        await page.locator('div:nth-child(3) > .AknTextField').fill('50');
         await page.getByRole('button', { name: 'Save' }).click();
         await page.getByTitle('Super Admin').click();
         await page.getByText('Logout').click();
