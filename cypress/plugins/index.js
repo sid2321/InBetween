@@ -17,13 +17,16 @@
  * @type {Cypress.PluginConfig}
  */
 const { chromium, test, expect } = require('@playwright/test');
+//import userData from '../../fixtures/user_info_akeneo.json'
+
+
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   const getCompareSnapshotsPlugin = require('cypress-image-diff-js/dist/plugin')
   getCompareSnapshotsPlugin(on, config)
-
+  
 
   on('task', {
     makechangesToPIM(){
@@ -56,13 +59,13 @@ module.exports = (on, config) => {
 
 
   on('task', {
-    drawusingAnnotationsMnanager(){
+    drawusingAnnotationsMnanager(url){
       return (async() => {
-        const browser = await chromium.launch();
+        const browser = await chromium.launch({ headless:false });
         const plannercontext = await browser.newContext();
         const page = await plannercontext.newPage();
       
-        await page.goto('http://localhost:8080/InBetween/');
+        await page.goto(url);
         await page.waitForLoadState("networkidle");
         await page.getByPlaceholder('User ID').fill('manager');
         await page.getByPlaceholder('Password').fill('manager');
@@ -78,7 +81,7 @@ module.exports = (on, config) => {
         await page.locator("#sel_pub").click();
         await page.getByRole('option', { name: 'Catalog_2023' }).getByText('Catalog_2023').click();
         await page.locator("#open_pub_button").click()
-        await expect(page.locator('mat-chip').filter({ has: page.getByText('Catalog_2023') })).toBeVisible();
+        await expect(page.locator('mat-chip').filter({ has: page.getByText('Catalog_2023') })).toBeVisible({ timeout:15000 });
         await page.locator('[id="PGS\\.14_3_page"] > .pageTtileContainer > .pageTitleOverlay').click();
       
         await page.locator('a').filter({ hasText: /^C$/ }).click();
