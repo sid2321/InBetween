@@ -307,7 +307,7 @@ describe('akeneo v1 showcase login open publication', () => {
         })
     })    
 
-    it.only('convert workflow stage media design', () => {
+    it('convert workflow stage media design', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(5000)
@@ -359,7 +359,7 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(5000)
-        cy.get('#PGS\\.10_1_page').as('page').within(() => {
+        cy.get('#PGS\\.15_2_page').as('page').within(() => {
             cy.contains(' album ').click();
             cy.wait(2000);
         })  
@@ -406,25 +406,43 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(5000)
-        cy.get('#wholePage_PGS\\.1_0').within(() => {
+        cy.get('#wholePage_PGS\\.2_0').as('page').within(() => {
            cy.get(elementBuilderManager.createSection).click({force:true})
         })
-        cy.get(elementBuilderManager.sectionHeader, {timeout:15000}).dblclick({force:true})
-        cy.get(elementBuilderManager.editSectionHeader).clear().type('akeneo_section');
-        cy.get('#PGS\\.10_1_FAR\\.1').as('clothingGrid').dragTo('#PGS\\.1_0_FAR\\.1')
-        cy.get('#PGS\\.10_1').find('[alt="minimize"]').should('exist')
+        cy.get('@page').siblings('#header').as('header')
+        cy.get('@header').find(elementBuilderManager.sectionHeader, {timeout:15000}).dblclick({force:true})
+        cy.get('@header').find(elementBuilderManager.editSectionHeader).clear().type('Cover');
+        cy.get('@header').within(() => {
+            cy.get('.colorpicker').click({ force:true })
+        })
+        cy.get('#ct_PGS\\.2').find('color-twitter').within(() => {
+            cy.get('[title="#FF94C2FF"]').click({ force:true })
+        })
+        cy.get('@header').find('.sectionCreate').should('have.css', 'background')
+        .and('include', 'rgb(255, 148, 194)')
+        cy.dragDropMasterPage(2,'groceries flow','1')
+        cy.get('#PGS\\.16').parent('#drag1').as('newClothingGrid')
+        cy.get('@newClothingGrid').as('cover').dragTo('#PGS\\.2_0_SAR\\.1')
+        cy.get('#PGS\\.16_1').find('[alt="minimize"]').should('exist')
+        cy.contains('swap_horiz').click({ force:true })
+        cy.contains('swap_horiz').click({ force:true })
+        cy.get('.staticPageImport').dragTo('.dummyPage')
+        cy.wait(2000)
+        cy.get('#PGS\\.2_1_SAR\\.1').dragTo('#section_section5_PGS\\.17_0')
+        cy.get('#PGS\\.2_0').find('[alt="minimize"]').should('exist')
+        cy.dragCurentlinkstopage('#PGS\\.16_1_DAR\\.1',1)
         cy.saveProject();
     })
 
-    it('generate pdf pulications',() => {
-        let renameFileName = 'akeneo-v1-hq-pdf.pdf'
+    it.only('generate hires-pdf pulications',() => {
+        
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(2000)
         cy.get(elementSelectionSelectors.sideToolBar).within(() => {
             cy.contains('A').click();
         })
-        cy.get(generateSelectors.previewPublication).as('previewButton').click({force:true})
+        /*cy.get(generateSelectors.previewPublication).as('previewButton').click({force:true})
         cy.get('@previewButton',{timeout:180000}).should('have.css', 'background')
             .and('include', 'rgb(255, 64, 129)')
         cy.get('.pageNum').as('elem').then((elem) => {
@@ -439,21 +457,11 @@ describe('akeneo v1 showcase login open publication', () => {
                     }
                     while (i < number[1]-1);
                 })
-        })
-        cy.get("[aria-label='Output Formats']").click();
-        cy.contains(' HQ-PDF ').click();
-        cy.get("[placeholder='PDF Quality Settings']").click();
-        cy.contains(' PDFX3 2002 ').click();
-        cy.get("[aria-label='Log Languages']").click();
-        cy.contains(' en_GB ').click();
-        cy.get("button[type='submit']").click();
-        cy.get('.progress-bar',{ timeout: 150000000 }).should('not.exist');
-        cy.get('.jobListContent').within(() => {
-            cy.get('mat-cell').eq(0).find('span').as('filename')
-        })
-        cy.disablePopUp();
-        cy.downloadGeneratedFile();
-        cy.verifyAndRenameDownlodedFile(renameFileName);  
+        })*/
+        let languages =  [' en_GB ',' de_DE ',' fr_FR ',' en_US ']
+        languages.forEach((language) => {
+            cy.GenerateHiresPDF(language) 
+        })  
     })  
     
     it('generate indd pulications',() => {

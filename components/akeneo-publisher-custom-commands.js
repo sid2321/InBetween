@@ -5,6 +5,22 @@ import elementSelectionSelectors from '../selectors/element-selection-selectors.
 import publisherSelectors from '../selectors/akeneo-Publisher-selectors.json'
 import akeneoPIMSelectors from '../selectors/akeneo-PIM-selectors.json'
 
+Cypress.Commands.add('GenerateHiresPDF', (lang) => {
+    let language = lang.trim();
+    let renameFileName = `akeneo-v1-showcase-pdf-${language}.pdf`
+    cy.get("[aria-label='Output Formats']").click();
+        cy.contains(' HIRES-PDF ').click({ force:true });
+        cy.get("[aria-label='Log Languages']").click();
+        cy.contains(lang).click();
+        cy.get("button[type='submit']").click();
+        cy.get('.progress-bar',{ timeout: 150000000 }).should('not.exist');
+        cy.get('.jobListContent').within(() => {
+            cy.get('mat-cell').eq(0).find('span').as('filename')
+        })
+        cy.disablePopUp();
+        cy.downloadGeneratedFile();
+        cy.verifyAndRenameDownlodedFile(renameFileName);
+})
 Cypress.Commands.add('GenerateUsingPublisher', (project,publication,format) => {
     cy.get(publisherSelectors.projectList).within(() =>{
         cy.get(publisherSelectors.selectArrow).click({force:true})

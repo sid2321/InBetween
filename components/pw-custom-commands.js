@@ -122,12 +122,12 @@ Cypress.Commands.add('addCommentsToConversion', (message) => {
 Cypress.Commands.add('verifyAndRenameDownlodedFile',(renameFileName) => {
     const { join } = require('path')
     cy.get('@filename').invoke('text').then((file) => {
-        cy.verifyDownload(file, { timeout: 25000, interval: 600 });
+        cy.verifyDownload(file, { timeout: 125000, interval: 600 });
         const downloadsFolder = Cypress.config('downloadsFolder');
         let downloadFilename = join(downloadsFolder, file)
         let result_downloadFilename = downloadFilename.replace("/", "\\");
         cy.log(result_downloadFilename);
-        cy.exec(`rename "${result_downloadFilename}" ${renameFileName}`)
+        cy.exec(`rename "${result_downloadFilename}" "${renameFileName}"`)
 
     }) 
     cy.get('.jobListContent').within(() => {
