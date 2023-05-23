@@ -55,7 +55,7 @@ describe('akeneo v1 showcase login open publication', () => {
     }
 
     beforeEach(() => {
-        cy.loginWithoutCaching('Simon','Simon','Publication Wizard',userData.login_url);
+        cy.loginWithoutCaching('manager','manager','Publication Wizard',userData.login_url);
         cy.pageLoaded();
     })
 
@@ -285,16 +285,16 @@ describe('akeneo v1 showcase login open publication', () => {
 
     })
 
-    it.only('annotations manager', () => {
+    it('annotations manager', () => {
         cy.drawusingAnnotationsMnanager();
 
     })
 
-    it.skip('convert workflow stage marketing finishing', () => {
+    it('convert workflow stage marketing finishing', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(5000)
-        cy.get('#PGS\\.1_0_page').as('page').within(() => {
+        cy.get('#PGS\\.15_2_page').as('page').within(() => {
             cy.get(elementBuilderManager.workFlowBar).click({force:true});
         })  
         cy.get('.mat-menu-panel').within(() => {
@@ -307,7 +307,7 @@ describe('akeneo v1 showcase login open publication', () => {
         })
     })    
 
-    it.skip('convert workflow stage media design', () => {
+    it.only('convert workflow stage media design', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(5000)
@@ -355,7 +355,7 @@ describe('akeneo v1 showcase login open publication', () => {
     })    
 
 
-    it.skip('convert workflow stage Distribution', () => {
+    it('convert workflow stage Distribution', () => {
         cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
         cy.selectPublication(projectData.akeneo.projectV1,publication);
         cy.wait(5000)
@@ -479,18 +479,3 @@ describe('akeneo v1 showcase login open publication', () => {
     })  
 })
         
-   // PGS.10_1_FAR.1
-
-    /*it.only('annotations manager drag rectangle', () => {
-        cy.visit(`${userData.login_url}/#/PublicationWizard/home`)
-        cy.selectPublication(projectData.akeneo.projectV1,' Catalog_2023 ');
-        cy.contains('C').click({force:true})
-        cy.waitforimageLoad()
-        cy.get(annotationManager.rectangleComment).click()
-        cy.wait(2000)
-        cy.get(annotationManager.canvasAnnot).trigger('mouseover','center')
-        cy.wait(5000)
-        /*.trigger('mousedown', { which: 1, pageX: 100, pageY: 100 })
-        .trigger('mousemove', { clientX: 200, clientY: 200 })
-        .trigger('mouseup');
-    })*/

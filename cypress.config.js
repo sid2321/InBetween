@@ -22,7 +22,6 @@ module.exports = defineConfig({
 
     //baseUrl: 'http://localhost:8080/InBetween',
     "defaultCommandTimeout":10000,
-    "taskTimeout":20000,
     "experimentalSessionAndOrigin":true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
