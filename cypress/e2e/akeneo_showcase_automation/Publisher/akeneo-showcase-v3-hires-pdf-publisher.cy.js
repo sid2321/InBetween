@@ -30,6 +30,7 @@ describe('akeneo v3 showcase login open publication', () => {
         cy.get('#deleteAll').click({force:true})
         cy.wait(2000)
         cy.get('#noJobsMessage').should('exist')
+        cy.renamezipfile('IB_Default_Showcase_V3_HIRES-PDF')
         cy.clearAllCookies()
         cy.clearAllSessionStorage()
         cy.clearAllLocalStorage()

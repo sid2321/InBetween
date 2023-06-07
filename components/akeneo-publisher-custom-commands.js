@@ -5,6 +5,23 @@ import elementSelectionSelectors from '../selectors/element-selection-selectors.
 import publisherSelectors from '../selectors/akeneo-Publisher-selectors.json'
 import akeneoPIMSelectors from '../selectors/akeneo-PIM-selectors.json'
 
+Cypress.Commands.add('generateINDD',(lang) => {
+    let language = lang.trim();
+    let renameFileName = `akeneo-v1-showcase-${language}.indd`
+    cy.get("[aria-label='Output Formats']").click();
+        cy.contains(' INDD ').click();
+        cy.get("button[type='submit']").click();
+        cy.get("[aria-label='Log Languages']").click();
+        cy.contains(lang).click();
+        cy.get('.progress-bar',{ timeout: 175000000 }).should('not.exist');
+        cy.get('.jobListContent').within(() => {
+            cy.get('mat-cell').eq(0).find('span').as('filename')
+        })
+        cy.disablePopUp();
+        cy.downloadGeneratedFile();
+        cy.verifyAndRenameDownlodedFile(renameFileName);  
+})
+
 Cypress.Commands.add('GenerateHiresPDF', (lang) => {
     let language = lang.trim();
     let renameFileName = `akeneo-v1-showcase-pdf-${language}.pdf`
@@ -152,6 +169,24 @@ Cypress.Commands.add('GenerateINDDPackagingPublisher', (project,publication) => 
         })
     })
     cy.get(publisherSelectors.downloadProgressBar, { timeout: 250000000, interval: 600 }).should('have.attr','aria-valuenow','100')
+})
+
+
+Cypress.Commands.add('UpdatePIMChanges', (productID,pricetype,price) => {
+    cy.get(akeneoPIMSelectors.pimProducts).click();
+            cy.get(akeneoPIMSelectors.productSearchbox).type(productID);
+            cy.contains(productID).click()
+            cy.get(akeneoPIMSelectors.productTitle).should('be.visible');
+
+            cy.xpath("//input[@data-currency='"+pricetype+"']").clear().type(price);
+            cy.get('.save').click();
+            cy.wait(100)
+
+            cy.get('[title="Super Admin"]').click();
+            cy.get('.logout').click();
+            cy.log("Data Changed");
+
+
 })
 
 

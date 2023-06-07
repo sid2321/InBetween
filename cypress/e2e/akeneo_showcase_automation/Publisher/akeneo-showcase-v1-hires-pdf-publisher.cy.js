@@ -30,6 +30,7 @@ describe('akeneo v1 showcase login open publication', () => {
         cy.get('#deleteAll').click({force:true})
         cy.wait(2000)
         cy.get('#noJobsMessage').should('exist')
+        cy.renamezipfile('IB_Default_Showcase_V1_HIRES-PDF')
         cy.clearAllCookies()
         cy.clearAllSessionStorage()
         cy.clearAllLocalStorage()
@@ -40,14 +41,17 @@ describe('akeneo v1 showcase login open publication', () => {
      'Flyer Groceries 2022','Flyer Outdoor 2022', 
     'Flyer Outdoor 2023','Fresh Food','Groceries','Groceries 2023',
 'Jeans and Leggings','Packaged Food','Shirts and Hoodies','SKI']
+
     publications.forEach((publication) => {
 
         it(`IB Publisher generate showcase v1  - ${publication}`,() => {
+
 
             cy.visit(`${userData.publisherLogin_URL}/`)
             cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
             cy.wait(5000)
             cy.GenerateUsingPublisher('IB_Default_Showcase_V1',publication,'HIRES-PDF')
+            
          }) 
 
     })

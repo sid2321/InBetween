@@ -58,7 +58,7 @@ import 'cypress-file-upload';
 
 Cypress.Commands.add('selectPublication', (projName,pubName) => {
     const publication = pubName.trim();
-    cy.wait(5000);
+    cy.wait(2000);
     cy.get(projSelection.projectSelector).within(() => {
             cy.get(projSelection.projectDropDown).within(() => {
                 cy.get('span').click()
@@ -161,6 +161,11 @@ Cypress.Commands.add('loginWithoutCaching', (userID, password, product,url) => {
             }
             
         })
+})
+Cypress.Commands.add('renamezipfile', (filename) => {
+    const downloadsFolder = Cypress.config('downloadsFolder');
+    let result_downloadFilename = downloadsFolder.replace("/", "\\");
+    cy.exec(`rename ${result_downloadFilename}\\*.zip ${filename}.zip`)
 })
 
 Cypress.Commands.add('inValidLogin', (userID, password, product) => {

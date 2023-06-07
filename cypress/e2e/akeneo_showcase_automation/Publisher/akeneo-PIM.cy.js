@@ -45,7 +45,7 @@ it('Login to Akeneo PIM & Make changes', () => {
 cy.verifyDownload('.zip', { contains: true });
 cy.get('#deleteAll').click({force:true})
 cy.get('#noJobsMessage').should('exist')
-
+cy.renamezipfile('PIM_IB_Default_Showcase_V1_PDF')
 cy.clearAllCookies()
 cy.clearAllSessionStorage()
 cy.clearAllLocalStorage()

@@ -30,6 +30,7 @@ describe('akeneo wco showcase login open publication', () => {
         cy.get('#deleteAll').click({force:true})
         cy.wait(2000)
         cy.get('#noJobsMessage').should('exist')
+        cy.renamezipfile('WCO_Showcase_INDD')
         cy.clearAllCookies()
         cy.clearAllSessionStorage()
         cy.clearAllLocalStorage()
@@ -46,7 +47,7 @@ describe('akeneo wco showcase login open publication', () => {
             cy.visit(`${userData.publisherLogin_URL}/`)
             cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
             cy.wait(5000)
-            cy.GenerateUsingPublisher('WCO_Showcase',publication)
+            cy.GenerateINDDPackagingPublisher('WCO_Showcase',publication)
          }) 
 
     })

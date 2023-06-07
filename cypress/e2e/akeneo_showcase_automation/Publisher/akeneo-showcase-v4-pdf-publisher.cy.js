@@ -30,13 +30,14 @@ describe('akeneo v4 showcase login open publication', () => {
         cy.get('#deleteAll').click({force:true})
         cy.wait(2000)
         cy.get('#noJobsMessage').should('exist')
+        cy.renamezipfile('IB_Default_Showcase_V4_PDF')
         cy.clearAllCookies()
         cy.clearAllSessionStorage()
         cy.clearAllLocalStorage()
         
     })
 
-    let publications =  ['Akeneo Demo 2023','Akeneo Products','Catalog 2022','Catalog_2023']
+    let publications =  ['Akeneo Demo 2023','Akeneo Products','Catalog 2022','Catalog 2023']
     publications.forEach((publication) => {
 
         it(`IB Publisher generate showcase v4  - ${publication}`,() => {

@@ -2,8 +2,8 @@ import userData from '../../../../fixtures/user_info_planner.json'
 import plannerSelector from '../../../../selectors/planner-selectors.json'
 
 
-describe('check test cases from creating new publication and section v1', () => {
-
+describe('check test cases from creating new publication and section v2', () => {
+    
     const retryOptions = {
         limit: 5, // max number of retries
         delay: 500 // delay before next iteration, ms
@@ -37,30 +37,29 @@ describe('check test cases from creating new publication and section v1', () => 
         cy.get(plannerSelector.projSelPlanner).find('span').click({force:true})
         cy.wait(2000)
         cy.get(plannerSelector.projecSelPlannerpanel).within(() =>{
-            cy.contains(' IB_Default_Showcase_V1 ').click({force:true})
+            cy.contains(' IB_Default_Showcase_V2 ').click({force:true})
         })
         cy.get('app-table').should('be.visible')
         cy.wait(2000)
         cy.get(plannerSelector.projectPubPlanner).click({force:true})
         cy.get(plannerSelector.projectPubPlannerPanel).within(() => {
-            cy.contains(' Publication ').click({force:true})
+            cy.contains(' Groceries ').click({force:true})
         })
-        cy.get(plannerSelector.searchPublication).as('search').type('Catalog_2023')
+        cy.get(plannerSelector.searchPublication).as('search').type('Flyer Groceries 2022')
         cy.get('app-table').within(() => {
-            cy.get('mat-row').should('have.length',4)
+            cy.get('mat-row').should('have.length',1)
         })
-        cy.get('@search').clear().type('Catalog')
-        cy.wait(2000)
+        cy.get('@search').clear().type('Groceries')
         cy.get('app-table').within(() => {
-            cy.get('mat-row').as('elements').should('have.length',8)
+            cy.get('mat-row').as('elements').should('have.length',3)
             cy.get('@elements').then((row) => {
                 for(let i=0; i<row.length; i++){
-                    cy.get('@elements').eq(0).find('mat-cell')
+                    cy.get('@elements').eq(i).find('mat-cell')
                     .eq(0).within(() =>{
                         cy.get('span')
                         .invoke('text').then(text => {
-                            let result = text.includes('Catalog')
-                            if(!result){ assert.fail('doesnt include Catalog')}
+                            let result = text.toLocaleLowerCase().includes('groceries')
+                            if(!result){ assert.fail('doesnt include Groceries')}
                         })
                     })
                 }
@@ -77,14 +76,14 @@ describe('check test cases from creating new publication and section v1', () => 
         cy.get(plannerSelector.createNewPubForm).within(() => {
             cy.get(plannerSelector.projectPanel).click({force:true})
         })
-        cy.contains(' IB_Default_Showcase_V1 ').click({force:true})
+        cy.contains(' IB_Default_Showcase_V2 ').click({force:true})
         cy.get(plannerSelector.createNewPubForm).within(() => {
             cy.get('[panelclass="panelClassForCNPublications"]').click({force:true})
         })
-        cy.contains(' Clothing ').click({force:true})
+        cy.contains(' Groceries ').click({force:true})
         cy.get(plannerSelector.createNewPubForm).within(() => {
             cy.get('mat-form-field').eq(2).find('input')
-            .type('Clothing_Demo')
+            .type('Groceries_Demo')
         })
         cy.get('[title="Next"]').click({force:true})
         cy.contains('en_GB').click({force:true})
@@ -93,15 +92,15 @@ describe('check test cases from creating new publication and section v1', () => 
         cy.get(plannerSelector.projSelPlanner).find('span').click({force:true})
         cy.wait(2000)
         cy.get(plannerSelector.projecSelPlannerpanel).within(() =>{
-            cy.contains(' IB_Default_Showcase_V1 ').click({force:true})
+            cy.contains(' IB_Default_Showcase_V2 ').click({force:true})
         })
         cy.get('app-table').should('be.visible')
         cy.wait(2000)
         cy.get(plannerSelector.projectPubPlanner).click({force:true})
         cy.get(plannerSelector.projectPubPlannerPanel).within(() => {
-            cy.contains(' Clothing ').click({force:true})
+            cy.contains(' Groceries ').click({force:true})
         })
-        cy.get(plannerSelector.searchPublication).as('search').type('Clothing_Demo')
+        cy.get(plannerSelector.searchPublication).as('search').type('Groceries_Demo')
         cy.get('#EDIT').click({force:true})
         cy.get('.editLanguageFlagIcon').click({force:true})
         cy.get('.editlanguageflags').within(() => {
@@ -110,18 +109,18 @@ describe('check test cases from creating new publication and section v1', () => 
         cy.get('.editLanguageFlagIcon').click({force:true})
         cy.get('.workflowStageInput').find('svg').click({force:true})
         cy.get('.mat-menu-panel').within(() => {
-            cy.contains('Media Design').click({force:true})
+            cy.contains('Distribution').click({force:true})
         })
-        cy.get('#userName_Clothing_Demo').find('svg').click({force:true})
+        cy.get('#userName_Groceries_Demo').find('svg').click({force:true})
         cy.get('.mat-menu-panel').within(() => {
             cy.contains('InBetween Project Manager').click({force:true})
         })
 
-        cy.get('#editDisabled_Clothing_Demo').within(() => {
+        cy.get('#editDisabled_Groceries_Demo').within(() => {
             cy.get('span').eq(1).find('img').click({force:true})
         })
-        cy.get('#workflowStageText_Clothing_Demo').should('have.text',' Marketing ')
-        cy.get('#userName_Clothing_Demo').find('span').eq(0).should('have.text',' Assignee ')
+        cy.get('#workflowStageText_Groceries_Demo').should('have.text',' Marketing ')
+        cy.get('#userName_Groceries_Demo').find('span').eq(0).should('have.text',' Assignee ')
        
 
     })
@@ -134,17 +133,18 @@ describe('check test cases from creating new publication and section v1', () => 
         cy.get(plannerSelector.projSelPlanner).find('span').click({force:true})
         cy.wait(2000)
         cy.get(plannerSelector.projecSelPlannerpanel).within(() =>{
-            cy.contains(' IB_Default_Showcase_V1 ').click({force:true})
+            cy.contains(' IB_Default_Showcase_V2 ').click({force:true})
         })
-        cy.get(plannerSelector.searchPublication).as('search').type('Catalog 2022')
-        cy.get('#titleSpan_Catalog_Default_Showcase').should('be.visible').and('have.text','Catalog 2022')
+        cy.get(plannerSelector.searchPublication).as('search').type('Groceries_Demo')
+        cy.get('#titleSpan_Groceries_Demo').should('be.visible')
         cy.wait(2000)
-        cy.get('#expandButton_Catalog_Default_Showcase').click({ force:true })
-        cy.get('#detail_row_Catalog_Default_Showcase').as('section_detail')
-        cy.get('@section_detail').find('.pageImageDimensions').as('page').should('be.visible')
+        cy.get('#expandButton_Groceries_Demo').click({ force:true })
+        cy.get('#detail_row_Groceries_Demo').as('section_detail')
+        cy.get('@section_detail').find('.pageImageDimensions').as('page').should('be.visible').and('have.length',2)
         cy.get('.pub_preview-btn').click({force:true})
-        cy.wait(50000)
-        cy.get('#detail_row_Catalog_Default_Showcase').compareSnapshot('check preview v1 showcase',0.2,retryOptions)
+        cy.wait(5000)
+        cy.get('[alt="Loading..."]',{ timeout: 200000 }).should('not.exist')
+        cy.get('#detail_row_Groceries_Demo').compareSnapshot('check preview v2 showcase',0.2,retryOptions)
 
     })
 })

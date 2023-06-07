@@ -30,6 +30,7 @@ describe('akeneo v3 showcase login open publication', () => {
         cy.get('#deleteAll').click({force:true})
         cy.wait(2000)
         cy.get('#noJobsMessage').should('exist')
+        cy.renamezipfile('IB_Default_Showcase_V3_INDD')
         cy.clearAllCookies()
         cy.clearAllSessionStorage()
         cy.clearAllLocalStorage()
@@ -48,7 +49,7 @@ describe('akeneo v3 showcase login open publication', () => {
             cy.get('#loaderBox',{timeout:50000000}).should('not.be.visible')
             cy.wait(5000)
 
-           cy.GenerateUsingPublisher('IB_Akeneo_Showcase_V3',publication)
+           cy.GenerateINDDPackagingPublisher('IB_Akeneo_Showcase_V3',publication)
          }) 
 
     })

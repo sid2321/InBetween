@@ -30,6 +30,7 @@ describe('akeneo v2 showcase login open publication', () => {
         cy.get('#deleteAll').click({force:true})
         cy.wait(2000)
         cy.get('#noJobsMessage').should('exist')
+        cy.renamezipfile('IB_Default_Showcase_V2_PDF')
         cy.clearAllCookies()
         cy.clearAllSessionStorage()
         cy.clearAllLocalStorage()
@@ -38,7 +39,7 @@ describe('akeneo v2 showcase login open publication', () => {
 
     let publications =  ['Brochure Clothing Summer 2021','Catalog 2022','Catalog_2023',
     'Fashion','Fashion_2023', 
-    'Flyer Groceries 2023','Flyer Outdoor 2022', 'Flyer Outdoor 2023','Fresh Food',
+    'Flyer Groceries 2022','Flyer Outdoor 2022', 'Flyer Outdoor 2023','Fresh Food',
     'Groceries','Groceries 2023','Jeans and Leggings',
 'Leggings','Packaged Food','Shirts and Hoodies','SKI']
 
